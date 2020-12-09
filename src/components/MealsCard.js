@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import '../style/RecipesList.css';
 
 function RecipesCard({ food, index }) {
   return (

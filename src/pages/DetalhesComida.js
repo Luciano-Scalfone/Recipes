@@ -9,9 +9,7 @@ import { fetchFoodAPI } from '../services/foodAPI';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import share from '../images/shareIcon.svg';
-import '../style/Detalhes.css';
 import load from '../images/load.png';
-import '../style/Loading.css';
 
 function DetalhesComida(props) {
   const {

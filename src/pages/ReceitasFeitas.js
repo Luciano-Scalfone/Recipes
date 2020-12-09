@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import copy from 'clipboard-copy';
 import Header from '../components/Header';
 import share from '../images/shareIcon.svg';
-import '../style/Detalhes.css';
 
 const ReceitasFeitas = () => {
   const recipes = JSON.parse(localStorage.getItem('doneRecipes'));

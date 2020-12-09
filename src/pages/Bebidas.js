@@ -8,7 +8,6 @@ import DrinksCard from '../components/DrinksCard';
 import DrinkFilters from '../components/DrinkFilters';
 import { drinkAPI } from '../services/drinkAPI';
 import load from '../images/load.png';
-import '../style/Loading.css';
 
 function Bebidas() {
   const {

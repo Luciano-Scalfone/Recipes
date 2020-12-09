@@ -10,8 +10,6 @@ import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import share from '../images/shareIcon.svg';
 import load from '../images/load.png';
-import '../style/RecipesInProgress.css';
-import '../style/Loading.css';
 
 function BebidasInProgress(props) {
   const { setMeals, fetchById, setFetchById, doneRecipes } = useContext(ReceitasContext);

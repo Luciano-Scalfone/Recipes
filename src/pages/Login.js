@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import logo from '../images/myfood.png';
-import '../style/Login.css';
 
 const Login = () => {
   const history = useHistory();
