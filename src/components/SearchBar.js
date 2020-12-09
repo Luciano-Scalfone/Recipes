@@ -42,66 +42,60 @@ function SearchBar() {
   };
 
   return (
-    url.length ? <Redirect to={ url } /> : (
-      <form onSubmit={ (e) => e.preventDefault() }>
-        <div style={ { top: '50px', background: '#7850B8' } } className="p-3">
+    url.length ? <Redirect to={url} /> : (
+      <form onSubmit={(e) => e.preventDefault()}>
+        <input
+          type="text"
+          data-testid="search-input"
+          placeholder="Buscar Receita"
+          className="form-control"
+          value={searchValue}
+          onChange={({ target }) => setSearchValue(target.value)}
+        />
+        <label htmlFor="ingredient" className="form-check-label">
           <input
-            type="text"
-            data-testid="search-input"
-            placeholder="Buscar Receita"
-            className="form-control"
-            value={ searchValue }
-            onChange={ ({ target }) => setSearchValue(target.value) }
+            type="radio"
+            id="ingredient"
+            name="searchInputRadio"
+            className="form-check-input"
+            value={radioValue}
+            onChange={({ target }) => setRadioValue(target.id)}
+            data-testid="ingredient-search-radio"
           />
-          <div className="form-check form-check-inline my-2">
-            <label htmlFor="ingredient" className="form-check-label">
-              <input
-                type="radio"
-                id="ingredient"
-                name="searchInputRadio"
-                className="form-check-input"
-                value={ radioValue }
-                onChange={ ({ target }) => setRadioValue(target.id) }
-                data-testid="ingredient-search-radio"
-              />
               Ingrediente
             </label>
-            <label htmlFor="name" className="form-check-label mx-2">
-              <input
-                type="radio"
-                id="name"
-                name="searchInputRadio"
-                className="form-check-input"
-                value={ radioValue }
-                onChange={ ({ target }) => setRadioValue(target.id) }
-                data-testid="name-search-radio"
-              />
+        <label htmlFor="name" className="form-check-label mx-2">
+          <input
+            type="radio"
+            id="name"
+            name="searchInputRadio"
+            className="form-check-input"
+            value={radioValue}
+            onChange={({ target }) => setRadioValue(target.id)}
+            data-testid="name-search-radio"
+          />
               Nome
             </label>
-            <label htmlFor="first-letter" className="form-check-label mx-1">
-              <input
-                type="radio"
-                id="first-letter"
-                name="searchInputRadio"
-                className="search-radio"
-                value={ radioValue }
-                onChange={ ({ target }) => setRadioValue(target.id) }
-                data-testid="first-letter-search-radio"
-              />
+        <label htmlFor="first-letter" className="form-check-label mx-1">
+          <input
+            type="radio"
+            id="first-letter"
+            name="searchInputRadio"
+            className="search-radio"
+            value={radioValue}
+            onChange={({ target }) => setRadioValue(target.id)}
+            data-testid="first-letter-search-radio"
+          />
               Primeira Letra
             </label>
-          </div>
-          <div>
-            <button
-              type="submit"
-              onClick={ handleFormSubmit }
-              data-testid="exec-search-btn"
-              className="btn btn-light"
-            >
-              Buscar
+        <button
+          type="submit"
+          onClick={handleFormSubmit}
+          data-testid="exec-search-btn"
+          className="btn btn-light"
+        >
+          Buscar
             </button>
-          </div>
-        </div>
       </form>
     )
   );

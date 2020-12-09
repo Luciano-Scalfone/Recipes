@@ -261,17 +261,16 @@ function ComidasInProgress(props) {
 
   return isFetching ? (
     <div className="align-self-center d-flex justify-content-center">
-      <img src={ load } alt="loading" className="loading" />
+      <img src={load} alt="loading" className="loading" />
     </div>
   ) : (
-    <section>
-      <Header title="Detalhes Comidas" />
-      {fetchById.map((meal, index) => (
-        <div className="justify-content-center" key={ index }>
-          <div className="detail-card">
+      <section>
+        <Header title="Detalhes Comidas" />
+        {fetchById.map((meal, index) => (
+          <div className="justify-content-center" key={index}>
             <img
               data-testid="recipe-photo"
-              src={ meal.strMealThumb }
+              src={meal.strMealThumb}
               width="40%"
               alt="recipe"
               className="rounded"
@@ -281,21 +280,21 @@ function ComidasInProgress(props) {
               <button
                 data-testid="share-btn"
                 type="button"
-                onClick={ copyToCB }
+                onClick={copyToCB}
                 className="btn"
               >
-                <img src={ share } alt="share" />
+                <img src={share} alt="share" />
               </button>
               {copied ? 'Link copiado!' : null}
               <button
                 type="button"
-                onClick={ () => setFavorite(meal.idMeal) }
+                onClick={() => setFavorite(meal.idMeal)}
                 className="btn"
               >
                 <img
                   data-testid="favorite-btn"
                   id="favorite-img"
-                  src={ !isFavorite ? whiteHeartIcon : blackHeartIcon }
+                  src={!isFavorite ? whiteHeartIcon : blackHeartIcon}
                   alt=""
                 />
               </button>
@@ -306,13 +305,13 @@ function ComidasInProgress(props) {
                 const measure = getMeasure(meal, /strMeasure/);
                 return (
                   <li
-                    key={ indx }
-                    id={ indx }
-                    data-testid={ `${indx}-ingredient-step` }
+                    key={indx}
+                    id={indx}
+                    data-testid={`${indx}-ingredient-step`}
                   >
                     <label
-                      htmlFor={ `${indx}-meal` }
-                      id={ item }
+                      htmlFor={`${indx}-meal`}
+                      id={item}
                       className={
                         checkedIngredients.includes(item)
                           ? 'ingredient-done'
@@ -321,9 +320,9 @@ function ComidasInProgress(props) {
                     >
                       <input
                         type="checkbox"
-                        id={ `${indx}-meal` }
-                        checked={ checkedIngredients.includes(item) }
-                        onClick={ () => handleClick(indx, item) }
+                        id={`${indx}-meal`}
+                        checked={checkedIngredients.includes(item)}
+                        onClick={() => handleClick(indx, item)}
                       />
                       {`${item} - ${measure[indx]}`}
                     </label>
@@ -337,7 +336,7 @@ function ComidasInProgress(props) {
             >
               <div>
                 {meal.strInstructions.split(/[1-9]+\./i).map((inst, i) => (
-                  <p key={ `${i}-description` }>{`${i + 1} - ${inst}`}</p>
+                  <p key={`${i}-description`}>{`${i + 1} - ${inst}`}</p>
                 ))}
               </div>
             </p>
@@ -345,21 +344,20 @@ function ComidasInProgress(props) {
               <Link to="/receitas-feitas">
                 <button
                   className="btn btn-block fixed-bottom"
-                  style={ { background: '#7850B8', color: 'white' } }
+                  style={{ background: '#7850B8', color: 'white' }}
                   data-testid="finish-recipe-btn"
                   type="button"
-                  disabled={ array.length !== checkedIngredients.length }
-                  onClick={ handleDoneRecipes }
+                  disabled={array.length !== checkedIngredients.length}
+                  onClick={handleDoneRecipes}
                 >
                   Finalizar Receita!
                 </button>
               </Link>
-            ) }
+            )}
           </div>
-        </div>
-      ))}
-    </section>
-  );
+        ))}
+      </section>
+    );
 }
 
 ComidasInProgress.propTypes = {

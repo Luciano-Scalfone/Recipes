@@ -29,25 +29,23 @@ function Bebidas() {
 
   return !drinks.length ? (
     <div className="align-self-center d-flex justify-content-center">
-      <img src={ load } alt="loading" className="loading" />
+      <img src={load} alt="loading" className="loading" />
     </div>
   ) : (
-    <section>
-      <Header title="Bebidas" searchBtn />
-      {searchBox && <SearchBar />}
-      <div className="my-4 py-2">
-        <DrinkFilters />
-        <div className="row my-4 mx-3">
+      <section>
+        <Header title="Bebidas" searchBtn />
+        {searchBox && <SearchBar />}
+        <div className="my-4 py-2">
+          <DrinkFilters />
           {drinks
             .filter((x, index) => index < doze)
             .map((drink, i) => (
-              <DrinksCard key={ i } drink={ drink } index={ i } />
+              <DrinksCard key={i} drink={drink} index={i} />
             ))}
         </div>
-      </div>
-      {location.pathname === '/bebidas' && <Footer />}
-    </section>
-  );
+        {location.pathname === '/bebidas' && <Footer />}
+      </section>
+    );
 }
 
 export default Bebidas;

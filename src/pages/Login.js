@@ -49,63 +49,43 @@ const Login = () => {
 
   return (
     <section className="bg">
-      <div className="container h-100">
-        <div className="d-flex justify-content-center h-100">
-          <div className="user_card">
-            <div className="d-flex justify-content-center">
-              <div className="brand_logo_container">
-                <img src={ logo } className="brand_logo" alt="Logo" />
-              </div>
-            </div>
-            <div className="d-flex justify-content-center form_container">
-              <form>
-                <div className="input-group mb-3">
-                  <div className="input-group-prepend">
-                    <span className="input-group-text">@</span>
-                  </div>
-                  <input
-                    id="email-input"
-                    placeholder="email"
-                    type="text"
-                    className="form-control"
-                    name="email"
-                    data-testid="email-input"
-                    onChange={ handleChange }
-                  />
-                </div>
-                <div className="input-group mb-2">
-                  <div className="input-group-prepend">
-                    <span className="input-group-text">#</span>
-                  </div>
-                  <input
-                    id="password-input"
-                    placeholder="password"
-                    className="form-control"
-                    name="password"
-                    type="password"
-                    data-testid="password-input"
-                    onChange={ handleChange }
-                  />
-                </div>
-                <div className="d-flex justify-content-center mt-3 login_container">
-                  <div>
-                    <button
-                      disabled={ disabled }
-                      type="button"
-                      className="btn login_btn"
-                      data-testid="login-submit-btn"
-                      onClick={ handleClick }
-                    >
-                      Login
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
+      <img src={logo} className="brand_logo" alt="Logo" />
+      <form>
+        <div>
+          <span className="input-group-text">@</span>
+          <input
+            id="email-input"
+            placeholder="email"
+            type="text"
+            className="form-control"
+            name="email"
+            data-testid="email-input"
+            onChange={handleChange}
+          />
         </div>
-      </div>
-    </section>
+        <div>
+          <span className="input-group-text">#</span>
+          <input
+            id="password-input"
+            placeholder="password"
+            className="form-control"
+            name="password"
+            type="password"
+            data-testid="password-input"
+            onChange={handleChange}
+          />
+        </div>
+        <button
+          disabled={disabled}
+          type="button"
+          className="btn login_btn"
+          data-testid="login-submit-btn"
+          onClick={handleClick}
+        >
+          Login
+            </button>
+      </form>
+    </section >
   );
 };
 

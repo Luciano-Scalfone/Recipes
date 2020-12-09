@@ -187,132 +187,119 @@ function DetalhesComida(props) {
 
   return isFetching ? (
     <div className="align-self-center d-flex justify-content-center">
-      <img src={ load } alt="loading" className="loading" />
+      <img src={load} alt="loading" className="loading" />
     </div>
   ) : (
-    <section>
-      <Header title="Detalhes Comidas" />
-      {fetchById.map((meal, index) => (
-        <div className="detail-container" key={ index }>
-          <div className="detail-card">
+      <section>
+        <Header title="Detalhes Comidas" />
+        {fetchById.map((meal, index) => (
+          <div className="detail-container" key={index}>
             <img
               data-testid="recipe-photo"
-              src={ meal.strMealThumb }
+              src={meal.strMealThumb}
               width="40%"
               alt="recipe"
               className="rounded"
             />
-            <h3 data-testid="recipe-title">{ meal.strMeal }</h3>
+            <h3 data-testid="recipe-title">{meal.strMeal}</h3>
             <div className="detail-btn my-2">
               <button
                 className="btn"
                 data-testid="share-btn"
                 type="button"
-                onClick={ copyToCB }
+                onClick={copyToCB}
               >
-                <img src={ share } alt="" />
+                <img src={share} alt="" />
               </button>
               {copied ? 'Link copiado!' : null}
               <button
                 className="btn"
                 type="button"
-                onClick={ () => setFavorite(meal.idMeal) }
+                onClick={() => setFavorite(meal.idMeal)}
               >
                 <img
                   data-testid="favorite-btn"
                   id="favorite-img"
-                  src={ !isFavorite ? whiteHeartIcon : blackHeartIcon }
+                  src={!isFavorite ? whiteHeartIcon : blackHeartIcon}
                   alt=""
                 />
               </button>
             </div>
             <div className="container justify-content-center">
-              <div className="text-center">
-                <h5 data-testid="recipe-category">{ meal.strCategory }</h5>
-                <hr className="card-hr" />
-                <h5>Ingredientes</h5>
-                <div className="flex-wrap d-flex">
-                  {getIngredients(meal, /strIngredient/).map((item, indx) => {
-                    const measure = getIngredients(meal, /strMeasure/);
-                    return (
-                      <p
-                        className="col-6"
-                        key={ indx }
-                        data-testid={ `${indx}-ingredient-name-and-measure` }
-                      >
-                        {`- ${item} - ${measure[indx]} `}
+              <h5 data-testid="recipe-category">{meal.strCategory}</h5>
+              <h5>Ingredientes</h5>
+              <div className="flex-wrap d-flex">
+                {getIngredients(meal, /strIngredient/).map((item, indx) => {
+                  const measure = getIngredients(meal, /strMeasure/);
+                  return (
+                    <p
+                      className="col-6"
+                      key={indx}
+                      data-testid={`${indx}-ingredient-name-and-measure`}
+                    >
+                      {`- ${item} - ${measure[indx]} `}
+                    </p>
+                  );
+                })}
+              </div>
+              <h5 className="mt-3">Instructions</h5>
+              <div
+                className="text-justify"
+                data-testid="instructions"
+              >
+                {meal.strInstructions.split(/[1-9]+\./i).map((inst, i) => (
+                  <p key={i}>{`${i + 1} - ${inst}`}</p>
+                ))}
+              </div>
+              <iframe
+                data-testid="video"
+                src={meal.strYoutube.replace('watch?v=', 'embed/')}
+                title="frame"
+              />
+              <h5>Recomendadas</h5>
+              <div className="carousel">
+                {drinks
+                  .filter((_, indx) => indx < seis)
+                  .map((drink, i) => (
+                    <div
+                      key={i}
+                      data-testid={`${i}-recomendation-card`}
+                    >
+                      <img
+                        src={drink.strDrinkThumb}
+                        className="card-img-top"
+                        alt={drink.strDrink}
+                      />
+                      <p className="card-subtitle text-muted">
+                        {drink.strAlcoholic}
                       </p>
-                    );
-                  }) }
-                </div>
-                <h5 className="mt-3">Instructions</h5>
-                <div
-                  className="text-justify"
-                  data-testid="instructions"
-                >
-                  {meal.strInstructions.split(/[1-9]+\./i).map((inst, i) => (
-                    <p key={ i }>{`${i + 1} - ${inst}`}</p>
-                  ))}
-                </div>
-                <iframe
-                  data-testid="video"
-                  src={ meal.strYoutube.replace('watch?v=', 'embed/') }
-                  title="frame"
-                />
-                <div className="row mb-3">
-                  <div className="col">
-                    <h5>Recomendadas</h5>
-                    <div className="carousel">
-                      {drinks
-                        .filter((_, indx) => indx < seis)
-                        .map((drink, i) => (
-                          <div
-                            key={ i }
-                            data-testid={ `${i}-recomendation-card` }
-                          >
-                            <div className="card">
-                              <img
-                                src={ drink.strDrinkThumb }
-                                className="card-img-top"
-                                alt={ drink.strDrink }
-                              />
-                              <div className="card-body">
-                                <p className="card-subtitle text-muted">
-                                  {drink.strAlcoholic}
-                                </p>
-                                <h5
-                                  data-testid={ `${i}-recomendation-title` }
-                                  className="card-title text-center fonte"
-                                >
-                                  {drink.strDrink}
-                                </h5>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
+                      <h5
+                        data-testid={`${i}-recomendation-title`}
+                        className="card-title text-center fonte"
+                      >
+                        {drink.strDrink}
+                      </h5>
                     </div>
-                  </div>
-                </div>
+                  ))}
               </div>
             </div>
             {!doneRecipes.includes(meal.idMeal) && (
-              <Link to={ `/comidas/${meal.idMeal}/in-progress` }>
+              <Link to={`/comidas/${meal.idMeal}/in-progress`}>
                 <button
                   className="btn btn-block fixed-bottom"
-                  style={ { background: '#7850B8', color: 'white' } }
+                  style={{ background: '#7850B8', color: 'white' }}
                   data-testid="start-recipe-btn"
                   type="button"
-                  onClick={ () => startRecipe(meal.idMeal) }
+                  onClick={() => startRecipe(meal.idMeal)}
                 >
                   {!startedRecipes ? 'Iniciar Receita' : verifyState(meal.idMeal)}
                 </button>
               </Link>
             )}
           </div>
-        </div>
-      ))}
-    </section>
-  );
+        ))}
+      </section>
+    );
 }
 
 DetalhesComida.propTypes = {

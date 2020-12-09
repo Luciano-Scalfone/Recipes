@@ -17,43 +17,39 @@ const ExplorarComidas = () => {
   return (
     <div className="bg">
       <Header title="Explorar Comidas" />
-      <div className="row justify-content-center align-items-center m-4">
-        <div className="col my-4">
-          <Link to="/explorar/comidas/ingredientes">
-            <button
-              data-testid="explore-by-ingredient"
-              type="button"
-              className="btn btn-block btn-lg my-2"
-              style={ { background: '#7ed957' } }
-            >
-              Por Ingredientes
+      <Link to="/explorar/comidas/ingredientes">
+        <button
+          data-testid="explore-by-ingredient"
+          type="button"
+          className="btn btn-block btn-lg my-2"
+          style={{ background: '#7ed957' }}
+        >
+          Por Ingredientes
             </button>
-          </Link>
-          <Link to="/explorar/comidas/area">
-            <button
-              data-testid="explore-by-area"
-              type="button"
-              className="btn btn-block btn-lg my-2"
-              style={ { background: '#7ed957' } }
-            >
-              Por Local de Origem
-            </button>
-          </Link>
-          <Link
-            to={ `/comidas/${randomMealID}` }
-            onClick={ () => setFetchById(false) }
-          >
-            <button
-              data-testid="explore-surprise"
-              type="button"
-              className="btn btn-block btn-lg my-2"
-              style={ { background: '#7ed957' } }
-            >
-              Me Surpreenda!
-            </button>
-          </Link>
-        </div>
-      </div>
+      </Link>
+      <Link to="/explorar/comidas/area">
+        <button
+          data-testid="explore-by-area"
+          type="button"
+          className="btn btn-block btn-lg my-2"
+          style={{ background: '#7ed957' }}
+        >
+          Por Local de Origem
+        </button>
+      </Link>
+      <Link
+        to={`/comidas/${randomMealID}`}
+        onClick={() => setFetchById(false)}
+      >
+        <button
+          data-testid="explore-surprise"
+          type="button"
+          className="btn btn-block btn-lg my-2"
+          style={{ background: '#7ed957' }}
+        >
+          Me Surpreenda!
+        </button>
+      </Link>
       <Footer />
     </div>
   );

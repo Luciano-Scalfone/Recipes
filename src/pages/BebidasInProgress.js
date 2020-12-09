@@ -255,17 +255,16 @@ function BebidasInProgress(props) {
 
   return isFetching ? (
     <div className="align-self-center d-flex justify-content-center">
-      <img src={ load } alt="loading" className="loading" />
+      <img src={load} alt="loading" className="loading" />
     </div>
   ) : (
-    <section>
-      <Header title="Detalhes Bebidas" />
-      {fetchById.map((drink, index) => (
-        <div className="justify-content-center" key={ index }>
-          <div className="detail-card">
+      <section>
+        <Header title="Detalhes Bebidas" />
+        {fetchById.map((drink, index) => (
+          <div className="justify-content-center" key={index}>
             <img
               data-testid="recipe-photo"
-              src={ drink.strDrinkThumb }
+              src={drink.strDrinkThumb}
               alt="drink"
               width="40%"
               className="rounded"
@@ -276,21 +275,21 @@ function BebidasInProgress(props) {
                 data-testid="share-btn"
                 type="button"
                 className="btn"
-                onClick={ copyToCB }
+                onClick={copyToCB}
               >
-                <img src={ share } alt="share" />
+                <img src={share} alt="share" />
               </button>
               {copied ? 'Link copiado!' : null}
             </div>
             <button
               type="button"
               className="btn"
-              onClick={ () => setFavorite(drink.idDrink) }
+              onClick={() => setFavorite(drink.idDrink)}
             >
               <img
                 data-testid="favorite-btn"
                 id="favorite-img"
-                src={ !isFavorite ? whiteHeartIcon : blackHeartIcon }
+                src={!isFavorite ? whiteHeartIcon : blackHeartIcon}
                 alt=""
               />
             </button>
@@ -299,9 +298,9 @@ function BebidasInProgress(props) {
               {getIngredients(drink, /strIngredient/).map((item, indx) => {
                 const measure = getIngredients(drink, /strMeasure/);
                 return (
-                  <li key={ indx } data-testid={ `${indx}-ingredient-step` }>
+                  <li key={indx} data-testid={`${indx}-ingredient-step`}>
                     <label
-                      htmlFor={ `${indx}-drink` }
+                      htmlFor={`${indx}-drink`}
                       className={
                         checkedIngredients.includes(item)
                           ? 'ingredient-done'
@@ -310,9 +309,9 @@ function BebidasInProgress(props) {
                     >
                       <input
                         type="checkbox"
-                        id={ `${indx}-drink` }
-                        checked={ checkedIngredients.includes(item) }
-                        onClick={ () => handleClick(indx, item) }
+                        id={`${indx}-drink`}
+                        checked={checkedIngredients.includes(item)}
+                        onClick={() => handleClick(indx, item)}
                       />
                       {`${item} - ${measure[indx]}`}
                     </label>
@@ -324,7 +323,7 @@ function BebidasInProgress(props) {
               data-testid="instructions"
               className="text-justify"
             >
-              { drink.strInstructions }
+              {drink.strInstructions}
             </p>
             {!doneRecipes.includes(drink.idDrink) && (
               <Link to="/receitas-feitas">
@@ -332,19 +331,18 @@ function BebidasInProgress(props) {
                   data-testid="finish-recipe-btn"
                   type="button"
                   className="btn btn-block fixed-bottom"
-                  style={ { background: '#7850B8', color: 'white' } }
-                  disabled={ array.length !== checkedIngredients.length }
-                  onClick={ handleDoneRecipes }
+                  style={{ background: '#7850B8', color: 'white' }}
+                  disabled={array.length !== checkedIngredients.length}
+                  onClick={handleDoneRecipes}
                 >
                   Finalizar Receita!
                 </button>
               </Link>
             )}
           </div>
-        </div>
-      ))}
-    </section>
-  );
+        ))}
+      </section>
+    );
 }
 
 BebidasInProgress.propTypes = {
