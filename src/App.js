@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import './App.css';
 import Bebidas from './pages/Bebidas';
 import BebidasInProgress from './pages/BebidasInProgress';
 import Comidas from './pages/Comidas';
@@ -18,6 +17,7 @@ import Perfil from './pages/Perfil';
 import ReceitasFeitas from './pages/ReceitasFeitas';
 import ComidasInProgress from './pages/ComidasInProgress';
 import FavoriteRecipes from './pages/FavoriteRecipes';
+import './Sass/App.css';
 
 function App() {
   return (

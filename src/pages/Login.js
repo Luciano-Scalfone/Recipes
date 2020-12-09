@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import logo from '../images/myfood.png';
 
 const Login = () => {
   const history = useHistory();
@@ -49,7 +48,6 @@ const Login = () => {
 
   return (
     <section className="bg">
-      <img src={logo} className="brand_logo" alt="Logo" />
       <form>
         <div>
           <span className="input-group-text">@</span>

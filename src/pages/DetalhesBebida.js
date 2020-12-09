@@ -9,7 +9,6 @@ import { foodAPI } from '../services/foodAPI';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import share from '../images/shareIcon.svg';
-import load from '../images/load.png';
 
 function DetalhesBebida(props) {
   const {
@@ -185,8 +184,8 @@ function DetalhesBebida(props) {
   };
 
   return isFetching ? (
-    <div className="align-self-center d-flex justify-content-center">
-      <img src={load} alt="loading" className="loading" />
+    <div>
+      carregando
     </div>
   ) : (
       <section>

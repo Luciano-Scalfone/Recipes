@@ -7,7 +7,6 @@ import SearchBar from '../components/SearchBar';
 import ReceitasContext from '../context/ReceitasContext';
 import FoodFilters from '../components/FoodFilters';
 import { foodAPI } from '../services/foodAPI';
-import load from '../images/load.png';
 
 const Comidas = (history) => {
   const { searchBox, meals, setMeals } = useContext(ReceitasContext);
@@ -26,8 +25,8 @@ const Comidas = (history) => {
   }, []);
 
   return !meals.length ? (
-    <div className="align-self-center d-flex justify-content-center">
-      <img src={load} alt="loading" className="loading" />
+    <div>
+      carregando
     </div>
   ) : (
       <section>

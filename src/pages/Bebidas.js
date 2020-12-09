@@ -7,7 +7,6 @@ import ReceitasContext from '../context/ReceitasContext';
 import DrinksCard from '../components/DrinksCard';
 import DrinkFilters from '../components/DrinkFilters';
 import { drinkAPI } from '../services/drinkAPI';
-import load from '../images/load.png';
 
 function Bebidas() {
   const {
@@ -28,8 +27,8 @@ function Bebidas() {
   }, []);
 
   return !drinks.length ? (
-    <div className="align-self-center d-flex justify-content-center">
-      <img src={load} alt="loading" className="loading" />
+    <div>
+      carregando
     </div>
   ) : (
       <section>

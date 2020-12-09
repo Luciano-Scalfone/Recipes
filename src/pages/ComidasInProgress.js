@@ -8,7 +8,6 @@ import { fetchFoodAPI } from '../services/foodAPI';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import share from '../images/shareIcon.svg';
-import load from '../images/load.png';
 
 function ComidasInProgress(props) {
   const { fetchById, doneRecipes, setFetchById } = useContext(ReceitasContext);
@@ -260,8 +259,8 @@ function ComidasInProgress(props) {
   };
 
   return isFetching ? (
-    <div className="align-self-center d-flex justify-content-center">
-      <img src={load} alt="loading" className="loading" />
+    <div>
+      carregando
     </div>
   ) : (
       <section>
