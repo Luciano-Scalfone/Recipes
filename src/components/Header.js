@@ -11,35 +11,34 @@ const Header = ({ title, searchBtn = false }) => {
   const showSearchBar = () => setSearchBox(!searchBox);
 
   return (
-    <section
-      className="navbar"
-      style={ { background: '#7850B8' } }
-    >
-      <Link to="/perfil">
-        <img
-          data-testid="profile-top-btn"
-          src={ profileIcon }
-          alt="Profile button"
-        />
-      </Link>
-      <h3 data-testid="page-title">
-        {title}
-      </h3>
-      {searchBtn ? (
-        <button
-          type="button"
-          className="border-0 bg-transparent"
-          onClick={ showSearchBar }
-        >
+    <section className="header">
+      <div className="header-content">
+        <Link to="/perfil">
           <img
-            data-testid="search-top-btn"
-            src={ searchIcon }
-            alt="show-hide-sbr"
+            data-testid="profile-top-btn"
+            src={profileIcon}
+            alt="Profile button"
           />
-        </button>
-      ) : (
-        <div />
-      )}
+        </Link>
+        <h3 data-testid="page-title">
+          {title}
+        </h3>
+        {searchBtn ? (
+          <button
+            type="button"
+            className="image"
+            onClick={showSearchBar}
+          >
+            <img
+              data-testid="search-top-btn"
+              src={searchIcon}
+              alt="show-hide-sbr"
+            />
+          </button>
+        ) : (
+            <div />
+          )}
+      </div>
     </section>
   );
 };

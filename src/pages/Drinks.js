@@ -28,11 +28,11 @@ function Bebidas() {
 
   return !drinks.length ? (
     <div>
-      carregando
+      Loading
     </div>
   ) : (
       <section>
-        <Header title="Bebidas" searchBtn />
+        <Header title="Drinks" searchBtn />
         {searchBox && <SearchBar />}
         <div className="my-4 py-2">
           <DrinkFilters />

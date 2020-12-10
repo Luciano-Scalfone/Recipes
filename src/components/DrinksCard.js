@@ -15,7 +15,7 @@ function DrinkCard({ drink, index }) {
             className="card-img-top w-50 mx-auto rounded-circle"
             src={drink.strDrinkThumb}
             alt={drink.strDrink}
-          />">
+          />
             <h5
             data-testid={`${index}-card-name`}
             className="card-title text-center fonte"

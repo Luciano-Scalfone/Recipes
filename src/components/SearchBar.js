@@ -47,7 +47,7 @@ function SearchBar() {
         <input
           type="text"
           data-testid="search-input"
-          placeholder="Buscar Receita"
+          placeholder="Search Recipe"
           className="form-control"
           value={searchValue}
           onChange={({ target }) => setSearchValue(target.value)}
@@ -62,7 +62,7 @@ function SearchBar() {
             onChange={({ target }) => setRadioValue(target.id)}
             data-testid="ingredient-search-radio"
           />
-              Ingrediente
+              Ingredient
             </label>
         <label htmlFor="name" className="form-check-label mx-2">
           <input
@@ -74,7 +74,7 @@ function SearchBar() {
             onChange={({ target }) => setRadioValue(target.id)}
             data-testid="name-search-radio"
           />
-              Nome
+              Name
             </label>
         <label htmlFor="first-letter" className="form-check-label mx-1">
           <input
@@ -86,7 +86,7 @@ function SearchBar() {
             onChange={({ target }) => setRadioValue(target.id)}
             data-testid="first-letter-search-radio"
           />
-              Primeira Letra
+              First Letter
             </label>
         <button
           type="submit"
@@ -94,7 +94,7 @@ function SearchBar() {
           data-testid="exec-search-btn"
           className="btn btn-light"
         >
-          Buscar
+          Search
             </button>
       </form>
     )

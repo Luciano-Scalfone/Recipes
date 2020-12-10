@@ -1,22 +1,28 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Bebidas from './pages/Bebidas';
-import BebidasInProgress from './pages/BebidasInProgress';
-import Comidas from './pages/Comidas';
-import DetalhesBebida from './pages/DetalhesBebida';
-import DetalhesComida from './pages/DetalhesComida';
-import Explorar from './pages/Explorar';
-import ExplorarBebidas from './pages/ExplorarBebidas';
-import ExplorarBebidasIng from './pages/ExplorarBebidasIng';
-import ExplorarComidas from './pages/ExplorarComidas';
-import ExplorarComidasIng from './pages/ExplorarComidasIng';
-import Login from './pages/Login';
-import ExplorarComidasArea from './pages/ExplorarComidasArea';
-import NotFound from './pages/NotFound';
-import Perfil from './pages/Perfil';
-import ReceitasFeitas from './pages/ReceitasFeitas';
-import ComidasInProgress from './pages/ComidasInProgress';
+
+import Bebidas from './pages/Drinks';
+import BebidasInProgress from './pages/DrinksInProgress';
+import DetalhesBebida from './pages/DrinkDetails';
+import ExplorarBebidas from './pages/ExploreDrinks';
+import ExplorarBebidasIng from './pages/ExploreDrinkIng';
+
+import Explorar from './pages/Explore';
+
+import Comidas from './pages/Meals';
+import ComidasInProgress from './pages/MealsInProgress';
+import DetalhesComida from './pages/MealDetails';
+import ExplorarComidas from './pages/ExploreMeals';
+import ExplorarComidasArea from './pages/ExploreArea';
+import ExplorarComidasIng from './pages/ExploreMealIng';
+
 import FavoriteRecipes from './pages/FavoriteRecipes';
+import ReceitasFeitas from './pages/DoneRecipes';
+
+import NotFound from './pages/NotFound';
+import Login from './pages/Login';
+import Perfil from './pages/Perfil';
+
 import './Sass/App.css';
 
 function App() {

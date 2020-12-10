@@ -30,7 +30,7 @@ const Comidas = (history) => {
     </div>
   ) : (
       <section>
-        <Header title="Comidas" searchBtn />
+        <Header title="Foods" searchBtn />
         {searchBox && <SearchBar history={history} />}
         <FoodFilters />
         <div className="row my-4 mx-3">
