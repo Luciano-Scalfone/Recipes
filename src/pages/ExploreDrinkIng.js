@@ -29,14 +29,15 @@ const ExplorarBebidasIng = () => {
         {drinksIngredientList
           && drinksIngredientList.slice(zero, twelve).map((ingred, index) => (
             <Link
-              to="/bebidas"
+              to={{
+                pathname: '/bebidas',
+                state: {
+                  type: 'ingredient',
+                  endPoint: `${ingred.strIngredient1}`,
+                }
+              }}
               data-testid={`${index}-ingredient-card`}
               key={ingred.strIngredient1}
-              onClick={() => {
-                drinkAPI('ingredient', ingred.strIngredient1)
-                  .then((response) => setDrinks(response));
-                setStopApi(true);
-              }}
             >
               <div className="card shadow">
                 <img

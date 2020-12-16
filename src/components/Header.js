@@ -9,8 +9,6 @@ import Filters from './Filters';
 const Header = ({ title, searchBtn = false, filters = false }) => {
   const { searchBox, setSearchBox } = useContext(ReceitasContext);
 
-  const showSearchBar = () => setSearchBox(!searchBox);
-
   return (
     <section className="header">
       <div className="header-content">
@@ -28,7 +26,7 @@ const Header = ({ title, searchBtn = false, filters = false }) => {
         <button
           type="button"
           className="image"
-          onClick={showSearchBar}
+          onClick={ () => setSearchBox(!searchBox) }
         >
           <img
             data-testid="search-top-btn"

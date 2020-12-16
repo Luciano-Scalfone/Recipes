@@ -9,7 +9,7 @@ function SearchBar() {
   const [radioValue, setRadioValue] = useState('');
   const [url, setUrl] = useState('');
 
-  const { setMeals, setDrinks } = useContext(ReceitasContext);
+  const { setMeals, setDrinks, setSearchBox } = useContext(ReceitasContext);
 
   const path = window.location.pathname;
 
@@ -39,6 +39,8 @@ function SearchBar() {
         handleUrl(responseDrinksAPI, 'idDrink');
       }
     }
+
+    setSearchBox(false);
   };
 
   return (
@@ -48,7 +50,7 @@ function SearchBar() {
           type="text"
           data-testid="search-input"
           placeholder="Search Recipe"
-          className="form-control"
+          // className=""
           value={searchValue}
           onChange={({ target }) => setSearchValue(target.value)}
         />
@@ -57,7 +59,7 @@ function SearchBar() {
             type="radio"
             id="ingredient"
             name="searchInputRadio"
-            className="form-check-input"
+            // className=""
             value={radioValue}
             onChange={({ target }) => setRadioValue(target.id)}
             data-testid="ingredient-search-radio"
@@ -69,7 +71,7 @@ function SearchBar() {
             type="radio"
             id="name"
             name="searchInputRadio"
-            className="form-check-input"
+            // className=""
             value={radioValue}
             onChange={({ target }) => setRadioValue(target.id)}
             data-testid="name-search-radio"
@@ -81,21 +83,21 @@ function SearchBar() {
             type="radio"
             id="first-letter"
             name="searchInputRadio"
-            className="search-radio"
+            // className=""
             value={radioValue}
             onChange={({ target }) => setRadioValue(target.id)}
             data-testid="first-letter-search-radio"
           />
-              First Letter
-            </label>
+          First Letter
+        </label>
         <button
           type="submit"
           onClick={handleFormSubmit}
           data-testid="exec-search-btn"
-          className="btn btn-light"
+          // className=""
         >
           Search
-            </button>
+        </button>
       </form>
     )
   );

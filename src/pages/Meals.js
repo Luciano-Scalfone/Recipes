@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import ReceitasContext from '../context/ReceitasContext';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
@@ -7,20 +6,28 @@ import MealsCard from '../components/MealsCard';
 import Footer from '../components/Footer';
 import { foodAPI } from '../services/foodAPI';
 
-const Comidas = (history) => {
+const Comidas = (props) => {
   const { searchBox, meals, setMeals } = useContext(ReceitasContext);
-
-  const location = useLocation();
+  
+  const { location } = props;
   const doze = 12;
 
   useEffect(() => {
     async function fetchFood() {
-      const responseFoodsAPI = await foodAPI();
+      if (!location.state) {
+        const responseFoodsAPI = await foodAPI();
 
-      setMeals(responseFoodsAPI);
+        setMeals(responseFoodsAPI);
+      } else {
+        const { type, endPoint } = location.state;
+  
+        const responseFoodsAPI = await foodAPI(type, endPoint);
+
+        setMeals(responseFoodsAPI);
+      }
     }
 
-    if (!meals.length) fetchFood();
+    fetchFood();
   }, []);
 
   return !meals.length ? (
@@ -30,7 +37,7 @@ const Comidas = (history) => {
   ) : (
       <section>
         <Header title="Foods" searchBtn filters />
-        {searchBox && <SearchBar history={history} />}
+        {searchBox && <SearchBar />}
         <div className="main-content">
           {meals.length && meals
             .filter((_, index) => index < doze)
