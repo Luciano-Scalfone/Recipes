@@ -1,0 +1,22 @@
+.filters {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  width: 95%;
+}
+
+.filter-button {
+  background: none;
+  border: 2px solid $button-filter-color;
+  border-radius: 15px;
+  color: $button-filter-color;
+  font-size: 15px;
+  font-weight: 700;
+  outline: none;
+  padding: 5px 15px;
+}
+
+.active-filter {
+  background: $button-filter-color;
+  color: $header-footer-color;
+}

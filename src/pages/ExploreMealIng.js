@@ -25,13 +25,12 @@ const ExplorarComidasIng = () => {
   return (
     <div>
       <Header title="Explorar Ingredientes" />
-      <div className="row my-4">
+      <div className="main-content">
         {ingredientList
           && ingredientList.slice(zero, twelve).map((ingred, index) => (
             <Link
               to="/comidas"
               data-testid={`${index}-ingredient-card`}
-              className="col-6 col-sm-4 col-md-3 mb-3"
               key={ingred.strIngredient}
               onClick={() => {
                 foodAPI('ingredient', ingred.strIngredient)
@@ -42,12 +41,10 @@ const ExplorarComidasIng = () => {
               <div>
                 <img
                   data-testid={`${index}-card-img`}
-                  className="card-img-top w-50 mx-auto rounded-circle"
                   src={`https://www.themealdb.com/images/ingredients/${ingred.strIngredient}-Small.png`}
                   alt={ingred.strIngredient}
                 />
                 <h5
-                  className="card-title text-center fonte"
                   data-testid={`${index}-card-name`}
                 >
                   {ingred.strIngredient}

@@ -17,13 +17,11 @@ const ExplorarBebidas = () => {
   return (
     <div className="bg">
       <Header title="Explorar Bebidas" />
-      <div className="row justify-content-center align-items-center m-4">
+      <div className="main-content">
         <Link to="/explorar/bebidas/ingredientes">
           <button
             data-testid="explore-by-ingredient"
             type="button"
-            className="btn btn-block btn-lg my-2"
-            style={{ background: '#7ed957' }}
           >
             Por Ingredientes
             </button>
@@ -35,8 +33,6 @@ const ExplorarBebidas = () => {
           <button
             data-testid="explore-surprise"
             type="button"
-            className="btn btn-block btn-lg my-2"
-            style={{ background: '#7ed957' }}
           >
             Me Surpreenda!
             </button>

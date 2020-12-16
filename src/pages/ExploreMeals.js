@@ -15,41 +15,37 @@ const ExplorarComidas = () => {
   }, []);
 
   return (
-    <div className="bg">
+    <div>
       <Header title="Explorar Comidas" />
-      <Link to="/explorar/comidas/ingredientes">
-        <button
-          data-testid="explore-by-ingredient"
-          type="button"
-          className="btn btn-block btn-lg my-2"
-          style={{ background: '#7ed957' }}
-        >
-          Por Ingredientes
+      <div className="main-content">
+        <Link to="/explorar/comidas/ingredientes">
+          <button
+            data-testid="explore-by-ingredient"
+            type="button"
+          >
+            Por Ingredientes
             </button>
-      </Link>
-      <Link to="/explorar/comidas/area">
-        <button
-          data-testid="explore-by-area"
-          type="button"
-          className="btn btn-block btn-lg my-2"
-          style={{ background: '#7ed957' }}
-        >
-          Por Local de Origem
+        </Link>
+        <Link to="/explorar/comidas/area">
+          <button
+            data-testid="explore-by-area"
+            type="button"
+          >
+            Por Local de Origem
         </button>
-      </Link>
-      <Link
-        to={`/comidas/${randomMealID}`}
-        onClick={() => setFetchById(false)}
-      >
-        <button
-          data-testid="explore-surprise"
-          type="button"
-          className="btn btn-block btn-lg my-2"
-          style={{ background: '#7ed957' }}
+        </Link>
+        <Link
+          to={`/comidas/${randomMealID}`}
+          onClick={() => setFetchById(false)}
         >
-          Me Surpreenda!
+          <button
+            data-testid="explore-surprise"
+            type="button"
+          >
+            Me Surpreenda!
         </button>
-      </Link>
+        </Link>
+      </div>
       <Footer />
     </div>
   );

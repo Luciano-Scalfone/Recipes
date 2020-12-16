@@ -45,32 +45,34 @@ const ExplorarComidasArea = () => {
   return (
     <div>
       <Header title="Explorar Origem" searchBtn />
-      <label htmlFor="area-dropdown">
-        Locais:
+      <div className="main-content">
+        <label htmlFor="area-dropdown">
+          Locais:
         <div>
-          <select
-            data-testid="explore-by-area-dropdown"
-            id="area-dropdown"
-            className="form-control"
-            onChange={ (target) => handleSelect(target) }
-          >
-            {areas.map((area, i) => (
-              <option
-                data-testid={ `${area.strArea}-option` }
-                key={ i }
-                value={ area.strArea }
-              >
-                {area.strArea}
-              </option>
-            ))}
-          </select>
-        </div>
-      </label>
-      <main className="row my-4">
-        {meals.length && meals
-          .filter((x, index) => index < doze)
-          .map((food, i) => <MealsCard key={ i } food={ food } index={ i } />)}
-      </main>
+            <select
+              data-testid="explore-by-area-dropdown"
+              id="area-dropdown"
+              className="form-control"
+              onChange={(target) => handleSelect(target)}
+            >
+              {areas.map((area, i) => (
+                <option
+                  data-testid={`${area.strArea}-option`}
+                  key={i}
+                  value={area.strArea}
+                >
+                  {area.strArea}
+                </option>
+              ))}
+            </select>
+          </div>
+        </label>
+        <main>
+          {meals.length && meals
+            .filter((x, index) => index < doze)
+            .map((food, i) => <MealsCard key={i} food={food} index={i} />)}
+        </main>
+      </div>
       <Footer />
     </div>
   );

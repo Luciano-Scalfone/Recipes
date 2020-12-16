@@ -1,16 +1,36 @@
 body {
-  margin: 0;
-}
-
-.header {
-  background: #FF5747;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 70px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin: 0;
+}
+
+.main-content {
+  padding-top: 120px;
+}
+
+.header {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #ff5747;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
   overflow: hidden;
   position: fixed;
   width: 100%;
@@ -23,6 +43,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  height: 70px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -40,7 +61,7 @@ body {
 }
 
 .footer {
-  background: #FF5747;
+  background: #ff5747;
   bottom: 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -66,5 +87,32 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   width: 95%;
+}
+
+.filters {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 10px 0;
+  width: 95%;
+}
+
+.filter-button {
+  background: none;
+  border: 2px solid white;
+  border-radius: 15px;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  outline: none;
+  padding: 5px 15px;
+}
+
+.active-filter {
+  background: white;
+  color: #ff5747;
 }
 /*# sourceMappingURL=App.css.map */

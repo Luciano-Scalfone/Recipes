@@ -5,7 +5,6 @@ import SearchBar from '../components/SearchBar';
 import Footer from '../components/Footer';
 import ReceitasContext from '../context/ReceitasContext';
 import DrinksCard from '../components/DrinksCard';
-import DrinkFilters from '../components/DrinkFilters';
 import { drinkAPI } from '../services/drinkAPI';
 
 function Bebidas() {
@@ -32,10 +31,9 @@ function Bebidas() {
     </div>
   ) : (
       <section>
-        <Header title="Drinks" searchBtn />
+        <Header title="Drinks" searchBtn filters />
         {searchBox && <SearchBar />}
-        <div className="my-4 py-2">
-          <DrinkFilters />
+        <div className="main-content">
           {drinks
             .filter((x, index) => index < doze)
             .map((drink, i) => (

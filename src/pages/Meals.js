@@ -1,11 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import MealsCard from '../components/MealsCard';
-import Footer from '../components/Footer';
+import ReceitasContext from '../context/ReceitasContext';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
-import ReceitasContext from '../context/ReceitasContext';
-import FoodFilters from '../components/FoodFilters';
+import MealsCard from '../components/MealsCard';
+import Footer from '../components/Footer';
 import { foodAPI } from '../services/foodAPI';
 
 const Comidas = (history) => {
@@ -30,12 +29,11 @@ const Comidas = (history) => {
     </div>
   ) : (
       <section>
-        <Header title="Foods" searchBtn />
+        <Header title="Foods" searchBtn filters />
         {searchBox && <SearchBar history={history} />}
-        <FoodFilters />
-        <div className="row my-4 mx-3">
+        <div className="main-content">
           {meals.length && meals
-            .filter((x, index) => index < doze)
+            .filter((_, index) => index < doze)
             .map((food, i) => <MealsCard key={i} food={food} index={i} />)}
         </div>
         {location.pathname === '/comidas' && <Footer />}

@@ -1,5 +1,13 @@
-$header-footer-color:  #FF5747;
+$header-footer-color: #ff5747;
+$button-filter-color: white;
 
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin: 0;
+}
+
+.main-content {
+  padding-top: 120px;
 }

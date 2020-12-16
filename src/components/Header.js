@@ -4,8 +4,9 @@ import propTypes from 'prop-types';
 import ReceitasContext from '../context/ReceitasContext';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
+import Filters from './Filters';
 
-const Header = ({ title, searchBtn = false }) => {
+const Header = ({ title, searchBtn = false, filters = false }) => {
   const { searchBox, setSearchBox } = useContext(ReceitasContext);
 
   const showSearchBar = () => setSearchBox(!searchBox);
@@ -24,21 +25,22 @@ const Header = ({ title, searchBtn = false }) => {
           {title}
         </h3>
         {searchBtn ? (
-          <button
-            type="button"
-            className="image"
-            onClick={showSearchBar}
-          >
-            <img
-              data-testid="search-top-btn"
-              src={searchIcon}
-              alt="show-hide-sbr"
-            />
-          </button>
-        ) : (
-            <div />
-          )}
+        <button
+          type="button"
+          className="image"
+          onClick={showSearchBar}
+        >
+          <img
+            data-testid="search-top-btn"
+            src={searchIcon}
+            alt="show-hide-sbr"
+          />
+        </button>
+      ) : (
+        <div />
+      )}
       </div>
+      {filters && <Filters />}
     </section>
   );
 };

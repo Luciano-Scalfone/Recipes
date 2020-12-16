@@ -1,8 +1,9 @@
 .header {
+  align-items: center;
   background: $header-footer-color;
   display: flex;
-  height: 70px;
-  justify-content: center;
+  flex-direction: column;
+  height: max-content;
   overflow: hidden;
   position: fixed;
   width: 100%;
@@ -11,6 +12,7 @@
 .header-content {
   align-items: center;
   display: flex;
+  height: 70px;
   justify-content: space-between;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 25px;
