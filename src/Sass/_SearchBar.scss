@@ -1,0 +1,47 @@
+form {
+  align-items: center;
+  background-color: lighten($searchBar-field, 15%);
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  margin-top: 120px;
+  position: fixed;
+  width: 100%;
+
+  .input-field {
+    border-radius: 8px;
+    height: 30px;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 40%;
+    margin-bottom: 30%;
+    width: 60%;
+  }
+
+  .radio-buttons {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+
+    label {
+      font-style: italic;
+      font-size: 40px;
+    }
+
+    .center-radios {
+      width: fit-content;
+    }
+  }
+
+  button {
+    border-radius: 8px;
+    height: 40px;
+    font-size: 30px;
+  }
+}
