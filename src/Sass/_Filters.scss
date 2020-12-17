@@ -1,6 +1,7 @@
 .filters {
   display: flex;
   justify-content: space-between;
+  overflow: auto;
   padding: 10px 0;
   width: 95%;
 }
@@ -14,9 +15,16 @@
   font-weight: 700;
   outline: none;
   padding: 5px 15px;
+  white-space: nowrap;
 }
 
 .active-filter {
   background: $button-filter-color;
   color: $header-footer-color;
+}
+
+@media (max-width: 768px) {
+  .filter-button {
+    margin-right: 2vw;
+  }
 }

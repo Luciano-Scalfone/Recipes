@@ -1,16 +1,59 @@
 .recipe-cards {
   border: 2px solid $header-footer-color;
   border-radius: 10px;
-  height: 600px;
-  margin: auto;
-  margin-top: 4%;
-  margin-bottom: 3%;
+  height: 30vw;
+  @include display-flex;
+  justify-content: space-between;
+  margin: 4vw;
   overflow: hidden;
-  position: relative;
-  width: 40%;
-  
+  width: 35%;
+
   img {
-    height: 100%;
+    border-bottom: 2px $header-footer-color solid;
+    height: 26vw;
     width: 100%;
+  }
+
+  h5 {
+    color: black;
+    font-size: 1.5vw;
+    font-family: $font-page;
+    margin: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    text-decoration: underline;
+    width: 100%;
+  }
+}
+
+@media (max-width: 1440px) {
+  .recipe-cards {
+    margin: 7vw;
+  }
+}
+
+@media (max-width: 800px) {
+  .recipe-cards {
+    margin: 6vw;
+
+    h5 {
+      font-size: 2vw;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .recipe-cards {
+    height: 250px;
+    margin: 8.5vw;
+    width: 80%;
+
+    img {
+      height: 220px;
+    }
+
+    h5 {
+      font-size: 4vw;
+    }
   }
 }

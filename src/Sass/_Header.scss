@@ -15,7 +15,7 @@
   height: 70px;
   justify-content: space-between;
   font-family: $font-page;
-  font-size: 25px;
+  font-size: 40px;
   width: 95%;
 }
 
@@ -25,4 +25,18 @@
   width: 3%;
   height: 30px;
   outline: none;
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    font-size: 25px;
+    width: 90%;
+  }
+}
+
+@media (max-width: 550px) {
+  .header-content {
+    font-size: 25px;
+    width: 80%;
+  }
 }

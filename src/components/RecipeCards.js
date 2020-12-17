@@ -30,13 +30,14 @@ function RecipeCards({ recipe, index }) {
               : recipe.strDrink
           }
         />
+        
         <h5 data-testid={`${index}-card-name`}>
-          {
-            recipePath
-              ? recipe.strMeal
-              : recipe.strDrink
-          }
-        </h5>
+        {
+          recipePath
+            ? recipe.strMeal
+            : recipe.strDrink
+        }
+      </h5>
       </Link>
     </section>
   );
