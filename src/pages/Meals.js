@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import ReceitasContext from '../context/ReceitasContext';
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
-import MealsCard from '../components/MealsCard';
+import RecipeCards from '../components/RecipeCards';
 import Footer from '../components/Footer';
 import { foodAPI } from '../services/foodAPI';
 
@@ -41,7 +41,7 @@ const Comidas = (props) => {
         <div className="main-content">
           {meals.length && meals
             .filter((_, index) => index < doze)
-            .map((food, i) => <MealsCard key={i} food={food} index={i} />)}
+            .map((food, i) => <RecipeCards key={i} recipe={food} index={i} />)}
         </div>
         {location.pathname === '/comidas' && <Footer />}
       </section>

@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
 import Footer from '../components/Footer';
 import ReceitasContext from '../context/ReceitasContext';
-import DrinksCard from '../components/DrinksCard';
+import RecipeCards from '../components/RecipeCards';
 import { drinkAPI } from '../services/drinkAPI';
 
 const Bebidas = (props) => {
@@ -41,7 +41,7 @@ const Bebidas = (props) => {
         <div className="main-content">
           {drinks.length && drinks
             .filter((_, index) => index < doze)
-            .map((drink, i) => <DrinksCard key={i} drink={drink} index={i} />)}
+            .map((drink, i) => <RecipeCards key={i} recipe={drink} index={i} />)}
         </div>
         {location.pathname === '/bebidas' && <Footer />}
       </section>

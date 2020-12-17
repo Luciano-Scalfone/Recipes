@@ -47,26 +47,24 @@ const Login = () => {
   };
 
   return (
-    <section className="bg">
+    <section>
       <form>
         <div>
-          <span className="input-group-text">@</span>
+          <span>@</span>
           <input
             id="email-input"
             placeholder="email"
             type="text"
-            className="form-control"
             name="email"
             data-testid="email-input"
             onChange={handleChange}
           />
         </div>
         <div>
-          <span className="input-group-text">#</span>
+          <span>#</span>
           <input
             id="password-input"
             placeholder="password"
-            className="form-control"
             name="password"
             type="password"
             data-testid="password-input"
@@ -76,7 +74,6 @@ const Login = () => {
         <button
           disabled={disabled}
           type="button"
-          className="btn login_btn"
           data-testid="login-submit-btn"
           onClick={handleClick}
         >

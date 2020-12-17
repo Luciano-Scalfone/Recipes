@@ -1,0 +1,16 @@
+.recipe-cards {
+  border: 2px solid $header-footer-color;
+  border-radius: 10px;
+  height: 600px;
+  margin: auto;
+  margin-top: 4%;
+  margin-bottom: 3%;
+  overflow: hidden;
+  position: relative;
+  width: 40%;
+  
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}

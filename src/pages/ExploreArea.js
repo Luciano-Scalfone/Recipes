@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Header from '../components/Header';
 import { foodAPI, getAreas, getByArea } from '../services/foodAPI';
-import MealsCard from '../components/MealsCard';
+import RecipeCards from '../components/RecipeCards';
 import ReceitasContext from '../context/ReceitasContext';
 import Footer from '../components/Footer';
 
@@ -70,7 +70,7 @@ const ExplorarComidasArea = () => {
         <main>
           {meals.length && meals
             .filter((x, index) => index < doze)
-            .map((food, i) => <MealsCard key={i} food={food} index={i} />)}
+            .map((food, i) => <RecipeCards key={i} recipe={food} index={i} />)}
         </main>
       </div>
       <Footer />

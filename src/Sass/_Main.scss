@@ -1,15 +1,25 @@
 $header-footer-color: #ff5747;
 $searchBar-field: #ff7c70;
 $button-filter-color: white;
+$font-page: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+@mixin display-flex {
+  display: flex;
+  flex-direction: column;
+}
 
 body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   margin: 0;
 }
 
 .main-content {
+  align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
   padding-top: 120px;
   padding-bottom: 70px;
 }

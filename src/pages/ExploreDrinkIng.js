@@ -3,14 +3,13 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import ReceitasContext from '../context/ReceitasContext';
-import { listIngredients, drinkAPI } from '../services/drinkAPI';
+import { listIngredients } from '../services/drinkAPI';
 
 const ExplorarBebidasIng = () => {
   const {
     setDrinks,
     drinksIngredientList,
     setDrinksIngredientList,
-    setStopApi,
   } = useContext(ReceitasContext);
 
   useEffect(() => {
