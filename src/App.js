@@ -21,7 +21,7 @@ import ReceitasFeitas from './pages/DoneRecipes';
 
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
-import Perfil from './pages/Perfil';
+import Profile from './pages/Profile';
 
 import './Sass/App.css';
 
@@ -53,7 +53,7 @@ function App() {
         />
         <Route path="/receitas-feitas" component={ ReceitasFeitas } />
         <Route path="/receitas-favoritas" component={ FavoriteRecipes } />
-        <Route path="/perfil" component={ Perfil } />
+        <Route path="/perfil" component={ Profile } />
       </Switch>
     </BrowserRouter>
   );

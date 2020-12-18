@@ -1,0 +1,50 @@
+.main-profile {
+  align-items: center;
+  @include display-flex();
+  @include main-content-size();
+  justify-content: center;
+
+  .content {
+    @include display-flex();
+    align-items: center;
+    height: calc(90vh - (40px * 2));
+    justify-content: space-between;
+    width: 90%;
+
+    .user {
+      background-color: blueviolet;
+      height: 40%;
+      width: 100%;
+    }
+
+    .buttons {
+      align-items: center;
+      height: 40%;
+      @include display-flex();
+      justify-content: center;
+      width: 100%;
+
+      .inner-field {
+        align-items: center;
+        height: 70%;
+        @include display-flex();
+        justify-content: space-around;
+        width: 100%;
+
+        a {
+          width: 100%;
+
+          button {
+            background-color: $button-filter-color;
+            border: 2px solid $header-footer-color;
+            border-radius: 5px;
+            font-size: 4vw;
+            height: 8vw;
+            outline: none;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
