@@ -11,7 +11,7 @@
   border: 2px solid $button-filter-color;
   border-radius: 15px;
   color: $button-filter-color;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 700;
   outline: none;
   padding: 5px 15px;
@@ -23,8 +23,14 @@
   color: $header-footer-color;
 }
 
-@media (max-width: 768px) {
-  .filter-button {
-    margin-right: 2vw;
+@media (max-width: 750px) {
+  .filters {
+    padding: 0;
+    padding-bottom: 5px;
+
+    .filter-button {
+      margin-right: 2vw;
+      padding: 0 15px;
+    }
   }
 }

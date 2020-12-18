@@ -1,6 +1,6 @@
 $header-footer-color: #ff5747;
 $searchBar-field: #ff7c70;
-$button-filter-color: white;
+$button-filter-color: #fffafa;
 $font-page: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
 @mixin display-flex {
@@ -9,6 +9,7 @@ $font-page: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans 
 }
 
 body {
+  background-color: $button-filter-color;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -20,7 +21,6 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   overflow: auto;
-  padding-top: 120px;
+  padding-top: 60px;
   padding-bottom: 70px;
-  position: static;
 }

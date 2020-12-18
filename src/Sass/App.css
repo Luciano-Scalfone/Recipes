@@ -1,4 +1,5 @@
 body {
+  background-color: #fffafa;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -22,9 +23,8 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   overflow: auto;
-  padding-top: 120px;
+  padding-top: 60px;
   padding-bottom: 70px;
-  position: static;
 }
 
 .header {
@@ -39,9 +39,9 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: -webkit-max-content;
-  height: -moz-max-content;
-  height: max-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   overflow: hidden;
   position: fixed;
   width: 100%;
@@ -54,12 +54,13 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 70px;
+  height: 30px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  font-size: 40px;
+  font-size: 30px;
+  margin-top: 5px;
   width: 95%;
 }
 
@@ -71,6 +72,10 @@ body {
   outline: none;
 }
 
+img {
+  width: 25px;
+}
+
 @media (max-width: 768px) {
   .header-content {
     font-size: 25px;
@@ -80,8 +85,11 @@ body {
 
 @media (max-width: 550px) {
   .header-content {
-    font-size: 25px;
-    width: 80%;
+    font-size: 20px;
+    width: 85%;
+  }
+  img {
+    width: 6vw;
   }
 }
 
@@ -91,7 +99,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 70px;
+  height: 40px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -128,10 +136,10 @@ body {
 
 .filter-button {
   background: none;
-  border: 2px solid white;
+  border: 2px solid #fffafa;
   border-radius: 15px;
-  color: white;
-  font-size: 15px;
+  color: #fffafa;
+  font-size: 12px;
   font-weight: 700;
   outline: none;
   padding: 5px 15px;
@@ -139,13 +147,18 @@ body {
 }
 
 .active-filter {
-  background: white;
+  background: #fffafa;
   color: #ff5747;
 }
 
-@media (max-width: 768px) {
-  .filter-button {
+@media (max-width: 750px) {
+  .filters {
+    padding: 0;
+    padding-bottom: 5px;
+  }
+  .filters .filter-button {
     margin-right: 2vw;
+    padding: 0 15px;
   }
 }
 
@@ -162,7 +175,7 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-top: 120px;
+  margin-top: 88px;
   position: fixed;
   width: 100%;
 }
@@ -185,7 +198,7 @@ body {
 }
 
 .searchbar-form .searchbar-main .input-field {
-  background-color: white;
+  background-color: #fffafa;
   border: 2px solid #ff5747;
   border-radius: 8px;
   height: 40px;
@@ -240,7 +253,7 @@ body {
 }
 
 .searchbar-form .searchbar-main button {
-  background-color: white;
+  background-color: #fffafa;
   border: 2px solid #ff5747;
   border-radius: 8px;
   height: 40px;
@@ -253,9 +266,12 @@ body {
 }
 
 .recipe-cards {
+  background-color: #ff7c70;
   border: 2px solid #ff5747;
   border-radius: 10px;
-  height: 30vw;
+  -webkit-box-shadow: 0 0 2em #ff7c70;
+          box-shadow: 0 0 2em #ff7c70;
+  height: 15vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -266,51 +282,55 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin: 4vw;
+  margin: 3vw 1vw 0 1vw;
   overflow: hidden;
-  width: 35%;
+  width: 15%;
 }
 
 .recipe-cards img {
   border-bottom: 2px #ff5747 solid;
-  height: 26vw;
+  height: 13vw;
   width: 100%;
 }
 
 .recipe-cards h5 {
   color: black;
-  font-size: 1.5vw;
+  font-size: 1vw;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  margin: 0;
-  margin-bottom: 20px;
+  margin-top: 5px;
   text-align: center;
   text-decoration: underline;
   width: 100%;
 }
 
 @media (max-width: 1440px) {
-  .recipe-cards {
-    margin: 7vw;
+  h5 {
+    margin-top: 0;
   }
 }
 
 @media (max-width: 800px) {
   .recipe-cards {
+    height: 30vw;
     margin: 6vw;
+    width: 30%;
+  }
+  .recipe-cards img {
+    height: 26vw;
   }
   .recipe-cards h5 {
     font-size: 2vw;
+    margin-top: 0;
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 425px) {
   .recipe-cards {
-    height: 250px;
-    margin: 8.5vw;
+    height: 60vw;
     width: 80%;
   }
   .recipe-cards img {
-    height: 220px;
+    height: 50vw;
   }
   .recipe-cards h5 {
     font-size: 4vw;

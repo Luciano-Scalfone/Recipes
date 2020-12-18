@@ -10,7 +10,7 @@ const Bebidas = (props) => {
   const { searchBox, drinks, setDrinks } = useContext(ReceitasContext);
 
   const { location } = props;
-  const doze = 12;
+  const doze = 15;
 
   useEffect(() => {
     async function fetchDrink() {

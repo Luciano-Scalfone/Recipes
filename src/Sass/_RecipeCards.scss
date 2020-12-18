@@ -1,25 +1,26 @@
 .recipe-cards {
+  background-color: $searchBar-field;
   border: 2px solid $header-footer-color;
   border-radius: 10px;
-  height: 30vw;
+  box-shadow: 0 0 2em $searchBar-field;
+  height: 15vw;
   @include display-flex;
   justify-content: space-between;
-  margin: 4vw;
+  margin: 3vw 1vw 0 1vw; 
   overflow: hidden;
-  width: 35%;
+  width: 15%;
 
   img {
     border-bottom: 2px $header-footer-color solid;
-    height: 26vw;
+    height: 13vw;
     width: 100%;
   }
 
   h5 {
     color: black;
-    font-size: 1.5vw;
+    font-size: 1vw;
     font-family: $font-page;
-    margin: 0;
-    margin-bottom: 20px;
+    margin-top: 5px;
     text-align: center;
     text-decoration: underline;
     width: 100%;
@@ -27,29 +28,35 @@
 }
 
 @media (max-width: 1440px) {
-  .recipe-cards {
-    margin: 7vw;
+  h5 {
+    margin-top: 0;
   }
 }
 
 @media (max-width: 800px) {
   .recipe-cards {
+    height: 30vw;
     margin: 6vw;
+    width: 30%;
+
+    img {
+      height: 26vw;
+    }
 
     h5 {
       font-size: 2vw;
+      margin-top: 0;
     }
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 425px) {
   .recipe-cards {
-    height: 250px;
-    margin: 8.5vw;
+    height: 60vw;
     width: 80%;
 
     img {
-      height: 220px;
+      height: 50vw;
     }
 
     h5 {

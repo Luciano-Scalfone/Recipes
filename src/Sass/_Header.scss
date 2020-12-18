@@ -3,7 +3,7 @@
   background: $header-footer-color;
   display: flex;
   flex-direction: column;
-  height: max-content;
+  height: fit-content;
   overflow: hidden;
   position: fixed;
   width: 100%;
@@ -12,10 +12,11 @@
 .header-content {
   align-items: center;
   display: flex;
-  height: 70px;
+  height: 30px;
   justify-content: space-between;
   font-family: $font-page;
-  font-size: 40px;
+  font-size: 30px;
+  margin-top: 5px;
   width: 95%;
 }
 
@@ -27,6 +28,10 @@
   outline: none;
 }
 
+img {
+  width: 25px;
+}
+
 @media (max-width: 768px) {
   .header-content {
     font-size: 25px;
@@ -36,7 +41,11 @@
 
 @media (max-width: 550px) {
   .header-content {
-    font-size: 25px;
-    width: 80%;
+    font-size: 20px;
+    width: 85%;
+  }
+
+  img {
+    width: 6vw;
   }
 }
