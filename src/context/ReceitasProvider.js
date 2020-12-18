@@ -17,8 +17,11 @@ const ReceitasProvider = ({ children }) => {
   const [fetchById, setFetchById] = useState();
   const [beganRecipes, setBeganRecipes] = useState([]);
   const [doneRecipes, setDoneRecipes] = useState([]);
+  const [isFavorite, setIsFavorite] = useState(true);
 
   const state = {
+    isFavorite,
+    setIsFavorite,
     meals,
     setMeals,
     drinks,

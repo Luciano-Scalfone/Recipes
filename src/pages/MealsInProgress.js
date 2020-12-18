@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import copy from 'clipboard-copy';
 import ReceitasContext from '../context/ReceitasContext';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { fetchFoodAPI } from '../services/foodAPI';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
@@ -18,6 +19,7 @@ function ComidasInProgress(props) {
     },
   } = props;
 
+  const recipeID = id;
   let array;
   const [copied, setCopied] = useState(false);
   const [isFavorite, setIsFavorite] = useState(true);
@@ -264,86 +266,90 @@ function ComidasInProgress(props) {
     </div>
   ) : (
       <section>
-        <Header title="Detalhes Comidas" />
-        {fetchById.map((meal, index) => (
-          <div className="justify-content-center" key={index}>
-            <img
-              data-testid="recipe-photo"
-              src={meal.strMealThumb}
-              width="40%"
-              alt="recipe"
-              className="rounded"
-            />
-            <h3 data-testid="recipe-title">{meal.strMeal}</h3>
-            <div className="detail-btn my-2">
-              <button
-                data-testid="share-btn"
-                type="button"
-                onClick={copyToCB}
-                className="btn"
-              >
-                <img src={share} alt="share" />
-              </button>
-              {copied ? 'Link copiado!' : null}
-              <button
-                type="button"
-                onClick={() => setFavorite(meal.idMeal)}
-                className="btn"
-              >
-                <img
-                  data-testid="favorite-btn"
-                  id="favorite-img"
-                  src={!isFavorite ? whiteHeartIcon : blackHeartIcon}
-                  alt=""
-                />
-              </button>
-            </div>
-            <h5 data-testid="recipe-category">{meal.strCategory}</h5>
-            <ul id="ingredient-step">
-              {getIngredients(meal, /strIngredient/).map((item, indx) => {
-                const measure = getMeasure(meal, /strMeasure/);
-                return (
-                  <li
-                    key={indx}
-                    id={indx}
-                    data-testid={`${indx}-ingredient-step`}
-                  >
-                    <label
-                      htmlFor={`${indx}-meal`}
-                      id={item}
-                      className={
-                        checkedIngredients.includes(item)
-                          ? 'ingredient-done'
-                          : 'ingredient-not-done'
-                      }
+        <Header title="In Progress Foods" />
+        <div className="main-detail">
+          {fetchById.map((meal, index) => (
+            <div className="details-card" key={index}>
+              <img
+                data-testid="recipe-photo"
+                src={meal.strMealThumb}
+                width="100%"
+                alt="recipe"
+                className="recipe-image"
+              />
+              <div className="details">
+                <div className="name-field">
+                  <div className="name-category">
+                    <h3 data-testid="recipe-title">{meal.strMeal}</h3>
+                    <span data-testid="recipe-category">{meal.strCategory}</span>
+                  </div>
+                  <div>
+                    <button
+                      data-testid="share-btn"
+                      type="button"
+                      onClick={copyToCB}
                     >
-                      <input
-                        type="checkbox"
-                        id={`${indx}-meal`}
-                        checked={checkedIngredients.includes(item)}
-                        onClick={() => handleClick(indx, item)}
+                      <img src={share} alt="share" />
+                    </button>
+                    {copied ? 'Link copiado!' : null}
+                    <button
+                      type="button"
+                      onClick={() => setFavorite(meal.idMeal)}
+                    >
+                      <img
+                        data-testid="favorite-btn"
+                        id="favorite-img"
+                        src={!isFavorite ? whiteHeartIcon : blackHeartIcon}
+                        alt=""
                       />
-                      {`${item} - ${measure[indx]}`}
-                    </label>
-                  </li>
-                );
-              })}
-            </ul>
-            <p
-              data-testid="instructions"
-              className="text-justify"
-            >
-              <div>
-                {meal.strInstructions.split(/[1-9]+\./i).map((inst, i) => (
-                  <p key={`${i}-description`}>{`${i + 1} - ${inst}`}</p>
-                ))}
+                    </button>
+                  </div>
+                </div>
+                <h3 className="ingredients-title">Ingredients</h3>
+                <div id="ingredient-step">
+                  {getIngredients(meal, /strIngredient/).map((item, indx) => {
+                    const measure = getMeasure(meal, /strMeasure/);
+                    return (
+                      <div
+                        className="ingredients-list"
+                        key={indx}
+                        id={indx}
+                        data-testid={`${indx}-ingredient-step`}
+                      >
+                        <label
+                          htmlFor={`${indx}-meal`}
+                          id={item}
+                          className={
+                            checkedIngredients.includes(item)
+                              ? 'ingredient-done'
+                              : 'ingredient-not-done'
+                          }
+                        >
+                          <input
+                            type="checkbox"
+                            id={`${indx}-meal`}
+                            checked={checkedIngredients.includes(item)}
+                            onClick={() => handleClick(indx, item)}
+                          />
+                          {`${item} - ${measure[indx]}`}
+                        </label>
+                      </div>
+                    );
+                  })}
+                </div>
+                <h3 className="ingredients-title">Instructions</h3>
+                <div>
+                  {meal.strInstructions.split(/[1-9]+\./i).map((inst, i) => (
+                    <p key={`${i}-description`}>{`${i + 1} - ${inst}`}</p>
+                  ))}
+                </div>
               </div>
-            </p>
-            {!doneRecipes.includes(meal.idMeal) && (
+            </div>
+          ))}
+          <div className="start-button">
+            {!doneRecipes.includes(recipeID) && (
               <Link to="/receitas-feitas">
                 <button
-                  className="btn btn-block fixed-bottom"
-                  style={{ background: '#7850B8', color: 'white' }}
                   data-testid="finish-recipe-btn"
                   type="button"
                   disabled={array.length !== checkedIngredients.length}
@@ -354,7 +360,8 @@ function ComidasInProgress(props) {
               </Link>
             )}
           </div>
-        ))}
+        </div>
+        <Footer />
       </section>
     );
 }

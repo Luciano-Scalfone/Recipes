@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 import copy from 'clipboard-copy';
 import ReceitasContext from '../context/ReceitasContext';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { fetchDrinkAPI } from '../services/drinkAPI';
-import { foodAPI } from '../services/foodAPI';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import share from '../images/shareIcon.svg';
 
 function BebidasInProgress(props) {
-  const { setMeals, fetchById, setFetchById, doneRecipes } = useContext(ReceitasContext);
+  const { fetchById, setFetchById, doneRecipes } = useContext(ReceitasContext);
 
   const {
     match: {
@@ -19,6 +19,7 @@ function BebidasInProgress(props) {
     },
   } = props;
 
+  const recipeID = id;
   let array;
   const [copied, setCopied] = useState(false);
   const [isFavorite, setIsFavorite] = useState(true);
@@ -35,15 +36,9 @@ function BebidasInProgress(props) {
 
   useEffect(() => {
     async function fetchFood() {
-      const foodResponse = await foodAPI();
       const responseAPI = await fetchDrinkAPI(id);
 
-      setMeals(foodResponse);
       setFetchById(responseAPI);
-
-      const favoriteRecipes = JSON.parse(
-        localStorage.getItem('favoriteRecipes'),
-      );
 
       const localStorageRecipes = JSON.parse(localStorage.getItem('recipes'));
 
@@ -52,6 +47,8 @@ function BebidasInProgress(props) {
           setCheckedIngredients(localStorageRecipes[id]);
         }
       }
+
+      const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
 
       if (!favoriteRecipes || !favoriteRecipes.length) {
         setIsFavorite(false);
@@ -258,79 +255,88 @@ function BebidasInProgress(props) {
     </div>
   ) : (
       <section>
-        <Header title="Detalhes Bebidas" />
-        {fetchById.map((drink, index) => (
-          <div className="justify-content-center" key={index}>
-            <img
-              data-testid="recipe-photo"
-              src={drink.strDrinkThumb}
-              alt="drink"
-              width="40%"
-              className="rounded"
-            />
-            <h3 data-testid="recipe-title">{drink.strDrink}</h3>
-            <div className="detail-btn my-2">
-              <button
-                data-testid="share-btn"
-                type="button"
-                className="btn"
-                onClick={copyToCB}
-              >
-                <img src={share} alt="share" />
-              </button>
-              {copied ? 'Link copiado!' : null}
-            </div>
-            <button
-              type="button"
-              className="btn"
-              onClick={() => setFavorite(drink.idDrink)}
-            >
+        <Header title="In Progress Foods" />
+        <div className="main-detail">
+          {fetchById.map((drink, index) => (
+            <div className="details-card" key={index}>
               <img
-                data-testid="favorite-btn"
-                id="favorite-img"
-                src={!isFavorite ? whiteHeartIcon : blackHeartIcon}
-                alt=""
+                data-testid="recipe-photo"
+                src={drink.strDrinkThumb}
+                width="100%"
+                alt="recipe"
+                className="recipe-image"
               />
-            </button>
-            <h5 data-testid="recipe-category">{drink.strAlcoholic}</h5>
-            <ul>
-              {getIngredients(drink, /strIngredient/).map((item, indx) => {
-                const measure = getIngredients(drink, /strMeasure/);
-                return (
-                  <li key={indx} data-testid={`${indx}-ingredient-step`}>
-                    <label
-                      htmlFor={`${indx}-drink`}
-                      className={
-                        checkedIngredients.includes(item)
-                          ? 'ingredient-done'
-                          : 'ingredient-not-done'
-                      }
+              <div className="details">
+                <div className="name-field">
+                  <div className="name-category">
+                    <h3 data-testid="recipe-title">{drink.strDrink}</h3>
+                    <span data-testid="recipe-category">{drink.strCategory}</span>
+                  </div>
+                  <div>
+                    <button
+                      data-testid="share-btn"
+                      type="button"
+                      onClick={copyToCB}
                     >
-                      <input
-                        type="checkbox"
-                        id={`${indx}-drink`}
-                        checked={checkedIngredients.includes(item)}
-                        onClick={() => handleClick(indx, item)}
+                      <img src={share} alt="share" />
+                    </button>
+                    {copied ? 'Link copiado!' : null}
+                    <button
+                      type="button"
+                      onClick={() => setFavorite(drink.iddrink)}
+                    >
+                      <img
+                        data-testid="favorite-btn"
+                        id="favorite-img"
+                        src={!isFavorite ? whiteHeartIcon : blackHeartIcon}
+                        alt=""
                       />
-                      {`${item} - ${measure[indx]}`}
-                    </label>
-                  </li>
-                );
-              })}
-            </ul>
-            <p
-              data-testid="instructions"
-              className="text-justify"
-            >
-              {drink.strInstructions}
-            </p>
-            {!doneRecipes.includes(drink.idDrink) && (
+                    </button>
+                  </div>
+                </div>
+                <h3 className="ingredients-title">Ingredients</h3>
+                <div id="ingredient-step">
+                  {getIngredients(drink, /strIngredient/).map((item, indx) => {
+                    const measure = getIngredients(drink, /strMeasure/);
+                    return (
+                      <div
+                        key={indx}
+                        data-testid={`${indx}-ingredient-step`}
+                        className="ingredients-list"
+                      >
+                        <label
+                          htmlFor={`${indx}-drink`}
+                          className={
+                            checkedIngredients.includes(item)
+                              ? 'ingredient-done'
+                              : 'ingredient-not-done'
+                          }
+                        >
+                          <input
+                            type="checkbox"
+                            id={`${indx}-drink`}
+                            checked={checkedIngredients.includes(item)}
+                            onClick={() => handleClick(indx, item)}
+                          />
+                          {measure[indx] ? `${item} - ${measure[indx]}` : `${item}`}
+                        </label>
+                      </div>
+                    );
+                  })}
+                </div>
+                <h3 className="ingredients-title">Instructions</h3>
+                <p data-testid="instructions">
+                  {drink.strInstructions}
+                </p>
+              </div>
+            </div>
+          ))}
+          <div className="start-button">
+            {!doneRecipes.includes(recipeID) && (
               <Link to="/receitas-feitas">
                 <button
                   data-testid="finish-recipe-btn"
                   type="button"
-                  className="btn btn-block fixed-bottom"
-                  style={{ background: '#7850B8', color: 'white' }}
                   disabled={array.length !== checkedIngredients.length}
                   onClick={handleDoneRecipes}
                 >
@@ -339,7 +345,8 @@ function BebidasInProgress(props) {
               </Link>
             )}
           </div>
-        ))}
+        </div>
+        <Footer />
       </section>
     );
 }

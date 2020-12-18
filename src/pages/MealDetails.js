@@ -1,29 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import copy from 'clipboard-copy';
 import ReceitasContext from '../context/ReceitasContext';
 import Header from '../components/Header';
-import { drinkAPI } from '../services/drinkAPI';
+import Footer from '../components/Footer';
 import { fetchFoodAPI } from '../services/foodAPI';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import share from '../images/shareIcon.svg';
+import RecipeDetails from '../components/RecipeDetails';
 
 function DetalhesComida(props) {
   const {
-    drinks,
-    setDrinks,
-    fetchById,
-    setFetchById,
-    beganRecipes,
-    setBeganRecipes,
-    doneRecipes,
+    fetchById, setFetchById, beganRecipes, setBeganRecipes, doneRecipes, setIsFavorite,
   } = useContext(ReceitasContext);
-
-  const [copied, setCopied] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(true);
-  const [isFetching, setFetching] = useState(true);
 
   const {
     match: {
@@ -31,16 +18,15 @@ function DetalhesComida(props) {
     },
   } = props;
 
-  const startedRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  const [isFetching, setFetching] = useState(true);
 
-  const seis = 6;
+  const recipeID = id;
+  const startedRecipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
 
   useEffect(() => {
     async function fetchDrink() {
-      const responseFoodsAPI = await drinkAPI();
       const responseID = await fetchFoodAPI(id);
 
-      setDrinks(responseFoodsAPI);
       setFetchById(responseID);
 
       const favoriteRecipes = JSON.parse(
@@ -60,17 +46,6 @@ function DetalhesComida(props) {
 
     fetchDrink();
   }, []);
-
-  const getIngredients = (obj, filter) => {
-    const keys = [];
-
-    Object.keys(obj).forEach((key) => {
-      if (key && filter.test(key) && obj[key] !== '' && obj[key] !== null) {
-        keys.push(obj[key]);
-      }
-    });
-    return keys;
-  };
 
   const startRecipe = (recipeName) => {
     localStorage.setItem(
@@ -98,205 +73,34 @@ function DetalhesComida(props) {
     return 'Continuar Receita';
   };
 
-  const copyToCB = () => {
-    const url = window.location.href;
-
-    copy(url);
-    setCopied(true);
-  };
-
-  const localVerify = () => {
-    const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
-    const {
-      idMeal,
-      strArea,
-      strCategory,
-      strMeal,
-      strMealThumb,
-    } = fetchById[0];
-
-    if (!favoriteRecipes) {
-      localStorage.setItem(
-        'favoriteRecipes',
-        JSON.stringify([
-          {
-            id: idMeal,
-            type: 'comida',
-            area: strArea,
-            category: strCategory,
-            alcoholicOrNot: '',
-            name: strMeal,
-            image: strMealThumb,
-          },
-        ]),
-      );
-    } else {
-      localStorage.setItem(
-        'favoriteRecipes',
-        JSON.stringify([
-          ...favoriteRecipes,
-          {
-            id: idMeal,
-            type: 'comida',
-            area: '',
-            category: strCategory,
-            alcoholicOrNot: '',
-            name: strMeal,
-            image: strMealThumb,
-          },
-        ]),
-      );
-    }
-
-    setIsFavorite(true);
-  };
-
-  const removeFavorite = (idRecipe) => {
-    const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
-
-    let index;
-
-    favoriteRecipes.forEach((item, i) => {
-      if (item.id === idRecipe) {
-        index = i;
-      }
-    });
-
-    const zero = 0;
-    localStorage.setItem(
-      'favoriteRecipes',
-      JSON.stringify([
-        ...favoriteRecipes.slice(zero, index),
-        ...favoriteRecipes.slice(index + 1, favoriteRecipes.length),
-      ]),
-    );
-
-    setIsFavorite(false);
-  };
-
-  const setFavorite = (idRecipe) => {
-    const image = document.getElementById('favorite-img').src;
-
-    if (image.includes(whiteHeartIcon)) {
-      localVerify();
-    } else {
-      removeFavorite(idRecipe);
-    }
-  };
-
   return isFetching ? (
     <div>
       carregando
     </div>
   ) : (
       <section>
-        <Header title="Detalhes Comidas" />
-        {fetchById.map((meal, index) => (
-          <div className="detail-container" key={index}>
-            <img
-              data-testid="recipe-photo"
-              src={meal.strMealThumb}
-              width="40%"
-              alt="recipe"
-              className="rounded"
-            />
-            <h3 data-testid="recipe-title">{meal.strMeal}</h3>
-            <div className="detail-btn my-2">
-              <button
-                className="btn"
-                data-testid="share-btn"
-                type="button"
-                onClick={copyToCB}
-              >
-                <img src={share} alt="" />
-              </button>
-              {copied ? 'Link copiado!' : null}
-              <button
-                className="btn"
-                type="button"
-                onClick={() => setFavorite(meal.idMeal)}
-              >
-                <img
-                  data-testid="favorite-btn"
-                  id="favorite-img"
-                  src={!isFavorite ? whiteHeartIcon : blackHeartIcon}
-                  alt=""
-                />
-              </button>
-            </div>
-            <div className="container justify-content-center">
-              <h5 data-testid="recipe-category">{meal.strCategory}</h5>
-              <h5>Ingredientes</h5>
-              <div className="flex-wrap d-flex">
-                {getIngredients(meal, /strIngredient/).map((item, indx) => {
-                  const measure = getIngredients(meal, /strMeasure/);
-                  return (
-                    <p
-                      className="col-6"
-                      key={indx}
-                      data-testid={`${indx}-ingredient-name-and-measure`}
-                    >
-                      {`- ${item} - ${measure[indx]} `}
-                    </p>
-                  );
-                })}
-              </div>
-              <h5 className="mt-3">Instructions</h5>
-              <div
-                className="text-justify"
-                data-testid="instructions"
-              >
-                {meal.strInstructions.split(/[1-9]+\./i).map((inst, i) => (
-                  <p key={i}>{`${i + 1} - ${inst}`}</p>
-                ))}
-              </div>
-              <iframe
-                data-testid="video"
-                src={meal.strYoutube.replace('watch?v=', 'embed/')}
-                title="frame"
-              />
-              <h5>Recomendadas</h5>
-              <div className="carousel">
-                {drinks
-                  .filter((_, indx) => indx < seis)
-                  .map((drink, i) => (
-                    <div
-                      key={i}
-                      data-testid={`${i}-recomendation-card`}
-                    >
-                      <img
-                        src={drink.strDrinkThumb}
-                        className="card-img-top"
-                        alt={drink.strDrink}
-                      />
-                      <p className="card-subtitle text-muted">
-                        {drink.strAlcoholic}
-                      </p>
-                      <h5
-                        data-testid={`${i}-recomendation-title`}
-                        className="card-title text-center fonte"
-                      >
-                        {drink.strDrink}
-                      </h5>
-                    </div>
-                  ))}
-              </div>
-            </div>
-            {!doneRecipes.includes(meal.idMeal) && (
-              <Link to={`/comidas/${meal.idMeal}/in-progress`}>
+        <Header title="Food Details" />
+        <div className="main-detail">
+          {fetchById.map((meal, index) => (
+            <RecipeDetails recipe={meal} index={index} />
+          ))}
+          <div className="start-button">
+            {!doneRecipes.includes(recipeID) && (
+              <Link to={`/comidas/${recipeID}/in-progress`}>
                 <button
-                  className="btn btn-block fixed-bottom"
-                  style={{ background: '#7850B8', color: 'white' }}
                   data-testid="start-recipe-btn"
                   type="button"
-                  onClick={() => startRecipe(meal.idMeal)}
+                  onClick={() => startRecipe(recipeID)}
                 >
-                  {!startedRecipes ? 'Iniciar Receita' : verifyState(meal.idMeal)}
+                  {!startedRecipes
+                    ? 'Iniciar Receita'
+                    : verifyState(recipeID)}
                 </button>
               </Link>
             )}
           </div>
-        ))}
+        </div>
+        <Footer />
       </section>
     );
 }

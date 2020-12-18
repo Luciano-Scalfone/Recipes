@@ -171,11 +171,12 @@ img {
   display: -ms-flexbox;
   display: flex;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  height: 100%;
+  height: 15vh;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-top: 88px;
+  margin-top: 58px;
+  opacity: 0.93;
   position: fixed;
   width: 100%;
 }
@@ -188,27 +189,26 @@ img {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  height: 40%;
-  margin-bottom: 30%;
-  margin-top: 15%;
-  width: 60%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  height: 100%;
+  width: 95%;
 }
 
 .searchbar-form .searchbar-main .input-field {
   background-color: #fffafa;
   border: 2px solid #ff5747;
-  border-radius: 8px;
-  height: 40px;
+  border-radius: 5px;
+  height: 5vw;
   outline: none;
+  width: 98%;
 }
 
 .searchbar-form .searchbar-main .radio-buttons {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  height: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -224,17 +224,13 @@ img {
 
 .searchbar-form .searchbar-main .radio-buttons label {
   font-style: italic;
-  font-size: 40px;
+  font-size: 4vw;
 }
 
 .searchbar-form .searchbar-main .radio-buttons .center-radios {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -248,16 +244,15 @@ img {
 
 .searchbar-form .searchbar-main .radio-buttons .center-radios label input[type=radio] {
   border: 0px;
-  height: 35px;
-  width: 35px;
+  height: 3vw;
+  width: 3vw;
 }
 
 .searchbar-form .searchbar-main button {
   background-color: #fffafa;
   border: 2px solid #ff5747;
-  border-radius: 8px;
-  height: 40px;
-  font-size: 30px;
+  border-radius: 5px;
+  font-size: 4vw;
   outline: none;
 }
 
@@ -299,7 +294,7 @@ img {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   margin-top: 5px;
   text-align: center;
-  text-decoration: underline;
+  text-decoration: none;
   width: 100%;
 }
 
@@ -326,14 +321,208 @@ img {
 
 @media (max-width: 425px) {
   .recipe-cards {
-    height: 60vw;
-    width: 80%;
+    height: 50vw;
+    width: 35%;
   }
   .recipe-cards img {
-    height: 50vw;
+    height: 40vw;
   }
   .recipe-cards h5 {
     font-size: 4vw;
   }
+}
+
+.main-detail {
+  height: calc(100vh - (40px * 2));
+  overflow: scroll;
+  padding-bottom: 45px;
+  padding-top: 35px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.main-detail .details-card {
+  margin-bottom: 10px;
+}
+
+.main-detail .details-card .recipe-image {
+  height: 70vw;
+  width: 100%;
+}
+
+.main-detail .details-card .details {
+  padding: 0 15px;
+}
+
+.main-detail .details-card .details .name-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.main-detail .details-card .details .name-field h3 {
+  margin: 0;
+}
+
+.main-detail .details-card .details .name-field .name-category {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.main-detail .details-card .details .name-field .name-category span {
+  font-style: italic;
+}
+
+.main-detail .details-card .details .name-field button {
+  background: none;
+  border: none;
+  height: 30px;
+  margin-right: 5px;
+  outline: none;
+}
+
+.main-detail .details-card .details .ingredients-title {
+  text-align: center;
+  width: 100%;
+}
+
+.main-detail .details-card .details .ingredient-done {
+  text-decoration: line-through;
+}
+
+.main-detail .details-card .details .ingredient-not-done {
+  text-decoration: none;
+}
+
+.main-detail .details-card .details .ingredients-list:nth-child(even) {
+  font-style: italic;
+}
+
+.main-detail .details-card .details p {
+  text-align: justify;
+}
+
+.main-detail .start-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
+.main-detail .start-button a {
+  width: calc(100% - (15px * 2));
+}
+
+.main-detail .start-button button {
+  border: 2px solid #ff5747;
+  border-radius: 5px;
+  outline: none;
+  width: 100%;
+}
+
+.main-explore {
+  height: calc(100vh - (40px * 2));
+  overflow: scroll;
+  padding-bottom: 45px;
+  padding-top: 35px;
+}
+
+.ingredient-cards {
+  background-color: #ff7c70;
+  border: 2px solid #ff5747;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 0 2em #ff7c70;
+          box-shadow: 0 0 2em #ff7c70;
+  height: 50vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 6vw 2vw;
+  overflow: hidden;
+  text-align: center;
+  width: 40%;
+}
+
+.ingredient-cards img {
+  background-color: white;
+  border-bottom: 2px #ff5747 solid;
+  width: 100%;
+}
+
+.ingredient-cards h5 {
+  color: black;
+  font-size: 4vw;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  margin-top: 5px;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+}
+
+.explore-input {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.explore-input label {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  width: 90%;
+}
+
+.explore-input .input-field {
+  background-color: #fffafa;
+  border: 2px solid #ff5747;
+  border-radius: 5px;
+  height: 8vw;
+  outline: none;
+  width: 100%;
+}
+
+.explore-cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow: auto;
 }
 /*# sourceMappingURL=App.css.map */

@@ -47,17 +47,17 @@ function SearchBar() {
     url.length ? <Redirect to={url} /> : (
       <form onSubmit={(e) => e.preventDefault()} className="searchbar-form">
         <div className="searchbar-main">
-          <input
-            className="input-field"
-            type="text"
-            data-testid="search-input"
-            placeholder="Search Recipe"
-            value={searchValue}
-            onChange={({ target }) => setSearchValue(target.value)}
-          />
           <div className="radio-buttons">
+            <input
+              className="input-field"
+              type="text"
+              data-testid="search-input"
+              placeholder="Search Recipe"
+              value={searchValue}
+              onChange={({ target }) => setSearchValue(target.value)}
+            />
             <div className="center-radios">
-              <label htmlFor="ingredient" className="form-check-label">
+              <label htmlFor="ingredient">
                 <input
                   className="checkmarck"
                   type="radio"
@@ -69,7 +69,7 @@ function SearchBar() {
                 />
                 Ingredient
               </label>
-              <label htmlFor="name" className="form-check-label mx-2">
+              <label htmlFor="name">
                 <input
                   className="checkmarck"
                   type="radio"
@@ -81,7 +81,7 @@ function SearchBar() {
                 />
                 Name
               </label>
-              <label htmlFor="first-letter" className="form-check-label mx-1">
+              <label htmlFor="first-letter">
                 <input
                   className="checkmarck"
                   type="radio"

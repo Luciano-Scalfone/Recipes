@@ -44,15 +44,15 @@ const ExplorarComidasArea = () => {
 
   return (
     <div>
-      <Header title="Explorar Origem" searchBtn />
-      <div className="main-content">
-        <label htmlFor="area-dropdown">
-          Locais:
-        <div>
+      <Header title="Explore By Area" />
+      <div className="main-explore">
+        <div className="explore-input">
+          <label htmlFor="area-dropdown">
+            Places:
             <select
               data-testid="explore-by-area-dropdown"
               id="area-dropdown"
-              className="form-control"
+              className="input-field"
               onChange={(target) => handleSelect(target)}
             >
               {areas.map((area, i) => (
@@ -65,9 +65,9 @@ const ExplorarComidasArea = () => {
                 </option>
               ))}
             </select>
-          </div>
-        </label>
-        <main>
+          </label>
+        </div>
+        <main className="explore-cards">
           {meals.length && meals
             .filter((x, index) => index < doze)
             .map((food, i) => <RecipeCards key={i} recipe={food} index={i} />)}

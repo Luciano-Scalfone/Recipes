@@ -11,13 +11,13 @@ const Explore = () => (
         to="/explorar/comidas"
         data-testid="explore-food"
       >
-        <span>Explorar Comidas</span>
+        <span>Explore Foods</span>
       </Link>
       <Link
         to="/explorar/bebidas"
         data-testid="explore-drinks"
       >
-        <span>Explorar Bebidas</span>
+        <span>Explore Drinks</span>
       </Link>
     </div>
     <Footer />

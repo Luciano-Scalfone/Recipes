@@ -22,7 +22,7 @@
     font-family: $font-page;
     margin-top: 5px;
     text-align: center;
-    text-decoration: underline;
+    text-decoration: none;
     width: 100%;
   }
 }
@@ -52,11 +52,11 @@
 
 @media (max-width: 425px) {
   .recipe-cards {
-    height: 60vw;
-    width: 80%;
+    height: 50vw;
+    width: 35%;
 
     img {
-      height: 50vw;
+      height: 40vw;
     }
 
     h5 {

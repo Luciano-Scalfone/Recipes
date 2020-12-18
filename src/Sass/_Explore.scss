@@ -1,0 +1,61 @@
+.main-explore {
+  @include main-content-size();
+}
+
+  .ingredient-cards {
+    background-color: $searchBar-field;
+    border: 2px solid $header-footer-color;
+    border-radius: 10px;
+    box-shadow: 0 0 2em $searchBar-field;
+    height: 50vw;
+    @include display-flex;
+    justify-content: space-between;
+    margin: 6vw 2vw;
+    overflow: hidden;
+    text-align: center;
+    width: 40%;
+
+    img {
+      background-color: white;
+      border-bottom: 2px $header-footer-color solid;
+      width: 100%;
+    }
+
+    h5 {
+      color: black;
+      font-size: 4vw;
+      font-family: $font-page;
+      margin-top: 5px;
+      text-align: center;
+      text-decoration: none;
+      width: 100%;
+    }
+  }
+
+  .explore-input {
+    align-items: center;
+    @include display-flex();
+    margin-top: 20px;
+    width: 100%;
+
+    label {
+      font-family: $font-page;
+      width: 90%;
+    }
+
+    .input-field {
+      background-color: $button-filter-color;
+      border: 2px solid $header-footer-color;
+      border-radius: 5px;
+      height: 8vw;
+      outline: none;
+      width: 100%;
+    }
+  }
+
+  .explore-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: auto;
+  }

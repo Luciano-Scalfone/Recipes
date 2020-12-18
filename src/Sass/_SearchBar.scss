@@ -3,41 +3,42 @@
   background-color: lighten($searchBar-field, 15%);
   display: flex;
   font-family: $font-page;
-  height: 100%;
+  height: 15vh;
   justify-content: center;
-  margin-top: 88px;
+  margin-top: 58px;
+  opacity: 0.93;
   position: fixed;
   width: 100%;
 
   .searchbar-main {
     @include display-flex;
-    justify-content: space-between;
-    height: 40%;
-    margin-bottom: 30%;
-    margin-top: 15%;
-    width: 60%;
+    justify-content: space-around;
+    height:100%;
+    width: 95%;
 
     .input-field {
       background-color: $button-filter-color;
       border: 2px solid $header-footer-color;
-      border-radius: 8px;
-      height: 40px;
+      border-radius: 5px;
+      height: 5vw;
       outline: none;
+      width: 98%;
     }
 
     .radio-buttons {
       align-items: center;
-      @include display-flex;
+      height: 50%;
+      @include display-flex();
       justify-content: center;
       width: 100%;
 
       label {
         font-style: italic;
-        font-size: 40px;
+        font-size: 4vw;
       }
 
       .center-radios {
-        @include display-flex;
+        display: flex;
         width: fit-content;
 
         label {
@@ -45,8 +46,8 @@
 
           input[type=radio] {
             border: 0px;
-            height: 35px;
-            width: 35px;
+            height: 3vw;
+            width: 3vw;
           }
         }
       }
@@ -55,9 +56,8 @@
     button {
       background-color: $button-filter-color;
       border: 2px solid $header-footer-color;
-      border-radius: 8px;
-      height: 40px;
-      font-size: 30px;
+      border-radius: 5px;
+      font-size: 4vw;
       outline: none;
 
       &:focus {

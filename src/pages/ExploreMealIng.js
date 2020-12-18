@@ -19,42 +19,42 @@ const ExplorarComidasIng = () => {
   }, []);
 
   const zero = 0;
-  const twelve = 12;
+  const twelve = 20;
 
   return (
-    <div>
-      <Header title="Explorar Ingredientes" />
+    <section>
+      <Header title="Explore By Ingredients" />
       <div className="main-content">
         {ingredientList
           && ingredientList.slice(zero, twelve).map((ingred, index) => (
-            <Link
-              to={{
-                pathname: '/comidas',
-                state: {
-                  type: 'ingredient',
-                  endPoint: `${ingred.strIngredient}`,
-                }
-              }}
-              data-testid={`${index}-ingredient-card`}
-              key={ingred.strIngredient}
-            >
-              <div>
-                <img
-                  data-testid={`${index}-card-img`}
-                  src={`https://www.themealdb.com/images/ingredients/${ingred.strIngredient}-Small.png`}
-                  alt={ingred.strIngredient}
-                />
-                <h5
-                  data-testid={`${index}-card-name`}
-                >
-                  {ingred.strIngredient}
-                </h5>
-              </div>
-            </Link>
+            <div className="ingredient-cards">
+              <Link
+                to={{
+                  pathname: '/comidas',
+                  state: {
+                    type: 'ingredient',
+                    endPoint: `${ingred.strIngredient}`,
+                  }
+                }}
+                data-testid={`${index}-ingredient-card`}
+                key={ingred.strIngredient}
+              >
+                <div>
+                  <img
+                    data-testid={`${index}-card-img`}
+                    src={`https://www.themealdb.com/images/ingredients/${ingred.strIngredient}-Small.png`}
+                    alt={ingred.strIngredient}
+                  />
+                </div>
+              </Link>
+              <h5>
+                {ingred.strIngredient}
+              </h5>
+            </div>
           ))}
       </div>
       <Footer />
-    </div>
+    </section>
   );
 };
 

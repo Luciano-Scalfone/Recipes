@@ -1,0 +1,81 @@
+.main-detail {
+  @include main-content-size();
+  @include display-flex();
+  justify-content: space-between;
+
+  .details-card {
+    margin-bottom: 10px;
+  
+    .recipe-image {
+      height: 70vw;
+      width: 100%;
+    }
+  
+    .details {
+      padding: 0 15px;
+  
+      .name-field {
+        display: flex;
+        justify-content: space-between;
+  
+        h3 {
+          margin: 0;
+        }
+  
+        .name-category {
+          @include display-flex();
+  
+          span {
+            font-style: italic;
+          }
+        }
+  
+        button {
+          background: none;
+          border: none;
+          height: 30px;
+          margin-right: 5px;
+          outline: none;
+        }
+      }
+  
+      .ingredients-title {
+        text-align: center;
+        width: 100%;
+      }
+
+      .ingredient-done {
+        text-decoration: line-through;
+      }
+
+      .ingredient-not-done {
+        text-decoration: none;
+      }
+  
+      .ingredients-list:nth-child(even) {
+        font-style: italic;
+      }
+  
+      p {
+        text-align: justify;
+      }
+    }
+  }
+  
+  .start-button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  
+    a {
+      width: calc(100% - (15px * 2));
+    }
+  
+    button {
+      border: 2px solid $header-footer-color;
+      border-radius: 5px;
+      outline: none;
+      width: 100%;
+    }
+  }  
+}

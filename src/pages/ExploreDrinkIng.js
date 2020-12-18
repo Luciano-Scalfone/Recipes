@@ -19,38 +19,40 @@ const ExplorarBebidasIng = () => {
   }, []);
 
   const zero = 0;
-  const twelve = 12;
+  const twelve = 20;
 
   return (
     <div>
-      <Header title="Explorar Ingredientes" />
+      <Header title="Explore By Ingredients" />
       <div className="main-content">
         {drinksIngredientList
           && drinksIngredientList.slice(zero, twelve).map((ingred, index) => (
-            <Link
-              to={{
-                pathname: '/bebidas',
-                state: {
-                  type: 'ingredient',
-                  endPoint: `${ingred.strIngredient1}`,
-                }
-              }}
-              data-testid={`${index}-ingredient-card`}
-              key={ingred.strIngredient1}
-            >
-              <div className="card shadow">
-                <img
-                  data-testid={`${index}-card-img`}
-                  src={`https://www.thecocktaildb.com/images/ingredients/${ingred.strIngredient1}-Small.png`}
-                  alt={ingred.strIngredient1}
-                />
-                <h5
-                  data-testid={`${index}-card-name`}
-                >
-                  {ingred.strIngredient1}
-                </h5>
-              </div>
-            </Link>
+            <div className="ingredient-cards">
+              <Link
+                to={{
+                  pathname: '/bebidas',
+                  state: {
+                    type: 'ingredient',
+                    endPoint: `${ingred.strIngredient1}`,
+                  }
+                }}
+                data-testid={`${index}-ingredient-card`}
+                key={ingred.strIngredient1}
+              >
+                <div className="card shadow">
+                  <img
+                    data-testid={`${index}-card-img`}
+                    src={`https://www.thecocktaildb.com/images/ingredients/${ingred.strIngredient1}-Small.png`}
+                    alt={ingred.strIngredient1}
+                  />
+                </div>
+              </Link>
+              <h5
+                data-testid={`${index}-card-name`}
+              >
+                {ingred.strIngredient1}
+              </h5>
+            </div>
           ))}
       </div>
       <Footer />
