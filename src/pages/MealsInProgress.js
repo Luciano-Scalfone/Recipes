@@ -266,7 +266,7 @@ function ComidasInProgress(props) {
     </div>
   ) : (
       <section>
-        <Header title="In Progress Foods" />
+        <Header title="In Progress" />
         <div className="main-detail">
           {fetchById.map((meal, index) => (
             <div className="details-card" key={index}>
