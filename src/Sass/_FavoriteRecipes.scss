@@ -67,6 +67,34 @@
           outline: none;
         }
       }
+
+      .done-data {
+        align-items: center;
+        @include display-flex;
+        justify-content: space-around;
+        width: 60%;
+
+        .data {
+          overflow: visible;
+          @include display-flex;
+
+          h3 {
+            margin: 0;
+          }
+
+          span {
+            font-style: italic;
+          }
+        }
+
+        button {
+          background: none;
+          border: none;
+          height: 30px;
+          margin-right: 5px;
+          outline: none;
+        }
+      }
     }
   }
 }

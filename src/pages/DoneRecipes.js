@@ -78,44 +78,35 @@ const ReceitasFeitas = () => {
                       alt=""
                     />
                   </Link>
-                  <div className="recipe-data">
-                    <div className="recipe-name">
-                      <h3>
-                        {recipe.name}
-                      </h3>
-                      {recipe.area.length
-                        ? (
-                          <span>
-                            {`${recipe.area} - ${recipe.category}`}
-                          </span>
-                        )
-                        : (
-                          <p>
-                            {recipe.alcoholicOrNot}
-                          </p>
-                        )}
-                      <p
-                        data-testid={`${index}-horizontal-done-date`}
-                      >
+                  <div className="done-data">
+                    <div className="data">
+                      <div className="name">
+                        <h3>
+                          {recipe.name}
+                        </h3>
+                        <span>
+                          {recipe.area.length
+                            ? (
+                              `${recipe.area} - ${recipe.category}`
+                            )
+                            : (
+                              recipe.alcoholicOrNot
+                            )}
+                        </span>
+                      </div>
+                      <span>
                         {recipe.doneDate}
-                      </p>
+                      </span>
                     </div>
-                    <div>
-                      <button type="button" className="btn" onClick={copyToCB}>
-                        <img
-                          id={recipe.id}
-                          name={recipe.type}
-                          data-testid={`${index}-horizontal-share-btn`}
-                          src={share}
-                          alt="share"
-                        />
-                      </button>
-                      {recipe.tags.map((tagName) => (
-                        <div>
-                          {tagName}
-                        </div>
-                      ))}
-                    </div>
+                    <button type="button" className="btn" onClick={copyToCB}>
+                      <img
+                        id={recipe.id}
+                        name={recipe.type}
+                        data-testid={`${index}-horizontal-share-btn`}
+                        src={share}
+                        alt="share"
+                      />
+                    </button>
                   </div>
                 </div>
               ))}

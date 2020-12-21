@@ -101,7 +101,7 @@ const FavoriteRecipes = () => {
                           {recipe.name}
                         </h3>
                         <span>
-                          { recipe.area.length ? `${recipe.area} - ${recipe.category}` : recipe.category}
+                          {recipe.area.length ? `${recipe.area} - ${recipe.category}` : recipe.category}
                         </span>
                       </div>
                       <div>
@@ -135,60 +135,60 @@ const FavoriteRecipes = () => {
                 );
               } else if (recipe.type === 'bebida') {
                 return (
-                    <div className="cards">
-                      <Link to={`/bebidas/${recipe.id}`}>
-                        <img
-                          src={recipe.image}
-                          alt={recipe.name}
-                          data-testid={`${index}-horizontal-image`}
-                          width="200"
-                        />
-                      </Link>
-                      <div className="recipe-data">
-                        <div className="recipe-name">
-                          <h3>
-                            {recipe.name}
-                          </h3>
-                          <span>
-                            {recipe.alcoholicOrNot}
-                          </span>
-                        </div>
-                        <div>
-                          <button
-                            data-testid={`${index}-horizontal-share-btn`}
-                            type="button"
-                            onClick={copyToCB}
+                  <div className="cards">
+                    <Link to={`/bebidas/${recipe.id}`}>
+                      <img
+                        src={recipe.image}
+                        alt={recipe.name}
+                        data-testid={`${index}-horizontal-image`}
+                        width="200"
+                      />
+                    </Link>
+                    <div className="recipe-data">
+                      <div className="recipe-name">
+                        <h3>
+                          {recipe.name}
+                        </h3>
+                        <span>
+                          {recipe.alcoholicOrNot}
+                        </span>
+                      </div>
+                      <div>
+                        <button
+                          data-testid={`${index}-horizontal-share-btn`}
+                          type="button"
+                          onClick={copyToCB}
+                          src={shareIcon}
+                        >
+                          <img
                             src={shareIcon}
-                          >
-                            <img
-                              src={shareIcon}
-                              alt="Compartilhar Receita"
-                            />
-                          </button>
-                          {copied ? 'Link copiado!' : null}
-                          <button
-                            type="button"
-                            onClick={() => removeFavorite(recipe.id)}
-                          >
-                            <img
-                              data-testid={`${index}-horizontal-favorite-btn`}
-                              id="favorite-img"
-                              src={blackHeartIcon}
-                              alt=""
-                            />
-                          </button>
-                        </div>
+                            alt="Compartilhar Receita"
+                          />
+                        </button>
+                        {copied ? 'Link copiado!' : null}
+                        <button
+                          type="button"
+                          onClick={() => removeFavorite(recipe.id)}
+                        >
+                          <img
+                            data-testid={`${index}-horizontal-favorite-btn`}
+                            id="favorite-img"
+                            src={blackHeartIcon}
+                            alt=""
+                          />
+                        </button>
                       </div>
                     </div>
+                  </div>
                 );
               }
               return '';
             })
           }
-                  </div>
+        </div>
       </div>
-        <Footer />
-      </div >
+      <Footer />
+    </div >
   )
 };
 
