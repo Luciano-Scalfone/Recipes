@@ -31,7 +31,7 @@ const ReceitasFeitas = () => {
     ? <h1>No Recipes Yet!</h1>
     : (
       <section>
-        <Header title="Receitas Feitas" />
+        <Header title="Done Recipes" />
         <div className="favorites-content">
           <div className="buttons">
             <button

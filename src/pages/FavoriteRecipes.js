@@ -55,7 +55,7 @@ const FavoriteRecipes = () => {
 
   return (
     <div>
-      <Header title="Receitas Favoritas" />
+      <Header title="Favorite Recipes" />
       <div className="favorites-content">
         <div className="buttons">
           <button
