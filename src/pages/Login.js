@@ -50,7 +50,6 @@ const Login = () => {
     <section>
       <form>
         <div>
-          <span>@</span>
           <input
             id="email-input"
             placeholder="email"
@@ -61,7 +60,6 @@ const Login = () => {
           />
         </div>
         <div>
-          <span>#</span>
           <input
             id="password-input"
             placeholder="password"
