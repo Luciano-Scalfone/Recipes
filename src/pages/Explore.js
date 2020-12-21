@@ -6,19 +6,21 @@ import Footer from '../components/Footer';
 const Explore = () => (
   <div>
     <Header title="Explore" />
-    <div className="main-content">
-      <Link
-        to="/explorar/comidas"
-        data-testid="explore-food"
-      >
-        <span>Explore Foods</span>
-      </Link>
-      <Link
-        to="/explorar/bebidas"
-        data-testid="explore-drinks"
-      >
-        <span>Explore Drinks</span>
-      </Link>
+    <div className="explore">
+      <div className="explore-buttons">
+        <Link
+          to="/explorar/comidas"
+          data-testid="explore-food"
+        >
+          Explore Foods
+        </Link>
+        <Link
+          to="/explorar/bebidas"
+          data-testid="explore-drinks"
+        >
+          Explore Drinks
+        </Link>
+      </div>
     </div>
     <Footer />
   </div>

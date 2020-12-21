@@ -1,0 +1,72 @@
+.favorites-content {
+  align-items: center;
+  @include display-flex;
+  @include main-content-size;
+
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+    width: 90%;
+
+    button {
+      background-color: $button-filter-color;
+      border: 2px solid $header-footer-color;
+      border-radius: 5px;
+      color: black;
+      font-size: 4vw;
+      font-family: $font-page;
+      height: 8vw;
+      justify-content: center;
+      outline: none;
+      text-decoration: none;
+      width: 30%;
+    }
+  }
+
+  .favorite-content {
+    @include display-flex;
+    width: 90%;
+
+    .cards {
+      display: flex;
+      @include box-shadow;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+      }
+
+      a {
+        background-color: red;
+        display: flex;
+        width: 40%;
+      }
+
+      .recipe-data {
+        align-items: center;
+        @include display-flex;
+        justify-content: space-around;
+        width: 60%;
+
+        h3 {
+          margin: 0;
+        }
+
+        span {
+          font-style: italic;
+        }
+
+        button {
+          background: none;
+          border: none;
+          height: 30px;
+          margin-right: 5px;
+          outline: none;
+        }
+      }
+    }
+  }
+}

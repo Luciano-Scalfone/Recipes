@@ -1,7 +1,6 @@
 $header-footer-color: #ff6c40;
 $searchBar-field: #ff8661;
 $cards-color: #ff8661;
-$shadow-color: #ff602f;
 $button-filter-color: #fff7f7;
 $font-page: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
@@ -15,6 +14,13 @@ $font-page: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans 
   overflow: scroll;
   padding-bottom: 45px;
   padding-top: 35px;
+}
+
+@mixin box-shadow {
+  background-color: lighten($cards-color, 15%);
+  border: 1px solid $button-filter-color;
+  border-radius: 10px;
+  box-shadow: 0 0 0.5em black;
 }
 
 body {

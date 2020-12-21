@@ -1,8 +1,5 @@
 .recipe-cards {
-  background-color: $cards-color;
-  border: 1px solid $button-filter-color;
-  border-radius: 10px;
-  box-shadow: 0 0 1em $shadow-color;
+  @include box-shadow;
   height: 15vw;
   @include display-flex;
   justify-content: space-between;

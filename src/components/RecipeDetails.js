@@ -142,6 +142,7 @@ const RecipeDetails = ({ recipe, index }) => {
         <p data-testid="instructions">
           {recipe.strInstructions}
         </p>
+        {recipePath && <iframe src={ recipe.strYoutube.replace('watch?v=', 'embed/') } width="100%" />}
       </div>
     </section>
   );

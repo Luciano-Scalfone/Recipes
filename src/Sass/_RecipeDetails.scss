@@ -63,6 +63,7 @@
   }
   
   .start-button {
+    bottom: 45px;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -76,6 +77,10 @@
       border-radius: 5px;
       outline: none;
       width: 100%;
+
+      &:disabled {
+        opacity: 0.4;
+      }
     }
   }  
 }

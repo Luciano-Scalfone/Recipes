@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import copy from 'clipboard-copy';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import share from '../images/shareIcon.svg';
 
 const ReceitasFeitas = () => {
@@ -31,16 +32,14 @@ const ReceitasFeitas = () => {
     : (
       <section>
         <Header title="Receitas Feitas" />
-        <div className="row justify-content-center align-items-center m-4">
-          <div className="col my-3">
+        <div className="favorites-content">
+          <div className="buttons">
             <button
               id="All"
               name="all"
               type="button"
-              className="btn btn-block btn-lg my-2"
-              style={ { background: '#7ed957' } }
               data-testid="filter-by-all-btn"
-              onClick={ handleFilter }
+              onClick={handleFilter}
             >
               All
             </button>
@@ -48,10 +47,8 @@ const ReceitasFeitas = () => {
               id="Food"
               name="comida"
               type="button"
-              className="btn btn-block btn-lg my-2"
-              style={ { background: '#7ed957' } }
               data-testid="filter-by-food-btn"
-              onClick={ handleFilter }
+              onClick={handleFilter}
             >
               Food
             </button>
@@ -59,79 +56,72 @@ const ReceitasFeitas = () => {
               id="Drink"
               name="bebida"
               type="button"
-              className="btn btn-block btn-lg my-2"
-              style={ { background: '#7ed957' } }
               data-testid="filter-by-drink-btn"
-              onClick={ handleFilter }
+              onClick={handleFilter}
             >
-              Drinks
+              Drink
             </button>
           </div>
-        </div>
-        {recipes.filter((recipe) => (
-          (currentFilter === 'all') ? recipe.type : recipe.type === currentFilter
-        ))
-          .map((recipe, index) => (
-            <div className="justify-content-center" key={ index }>
-              <div className="detail-card">
-                <Link
-                  to={ `/${recipe.type === 'comida'
-                    ? 'comidas' : 'bebidas'}/${recipe.id}` }
-                >
-                  <img
-                    data-testid={ `${index}-horizontal-image` }
-                    src={ recipe.image }
-                    className="rounded col-12"
-                    alt=""
-                  />
-                </Link>
-                {recipe.area.length
-                  ? (
-                    <p
-                      data-testid={ `${index}-horizontal-top-text` }
-                    >
-                      {`${recipe.area} - ${recipe.category}`}
-                    </p>
-                  )
-                  : (
-                    <p
-                      data-testid={ `${index}-horizontal-top-text` }
-                    >
-                      {recipe.alcoholicOrNot}
-                    </p>
-                  )}
-                <h3
-                  data-testid={ `${index}-horizontal-name` }
-                >
-                  {recipe.name}
-                </h3>
-                <p
-                  data-testid={ `${index}-horizontal-done-date` }
-                >
-                  {recipe.doneDate}
-                </p>
-                <div className="detail-btn my-2">
-                  <button type="button" className="btn" onClick={ copyToCB }>
-                    <img
-                      id={ recipe.id }
-                      name={ recipe.type }
-                      data-testid={ `${index}-horizontal-share-btn` }
-                      src={ share }
-                      alt="share"
-                    />
-                  </button>
-                </div>
-                {recipe.tags.map((tagName, indx) => (
-                  <div
-                    key={ indx }
-                    data-testid={ `${index}-${tagName}-horizontal-tag` }
+          <div className="favorite-content">
+            {recipes.filter((recipe) => (
+              (currentFilter === 'all') ? recipe.type : recipe.type === currentFilter
+            ))
+              .map((recipe, index) => (
+                <div key={index} className="cards">
+                  <Link
+                    to={`/${recipe.type === 'comida'
+                      ? 'comidas' : 'bebidas'}/${recipe.id}`}
                   >
-                    {tagName}
+                    <img
+                      data-testid={`${index}-horizontal-image`}
+                      src={recipe.image}
+                      alt=""
+                    />
+                  </Link>
+                  <div className="recipe-data">
+                    <div className="recipe-name">
+                      <h3>
+                        {recipe.name}
+                      </h3>
+                      {recipe.area.length
+                        ? (
+                          <span>
+                            {`${recipe.area} - ${recipe.category}`}
+                          </span>
+                        )
+                        : (
+                          <p>
+                            {recipe.alcoholicOrNot}
+                          </p>
+                        )}
+                      <p
+                        data-testid={`${index}-horizontal-done-date`}
+                      >
+                        {recipe.doneDate}
+                      </p>
+                    </div>
+                    <div>
+                      <button type="button" className="btn" onClick={copyToCB}>
+                        <img
+                          id={recipe.id}
+                          name={recipe.type}
+                          data-testid={`${index}-horizontal-share-btn`}
+                          src={share}
+                          alt="share"
+                        />
+                      </button>
+                      {recipe.tags.map((tagName) => (
+                        <div>
+                          {tagName}
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                )) }
-              </div>
-            </div>
-          ))}
+                </div>
+              ))}
+          </div>
+        </div>
+        <Footer />
       </section>
     )
   );

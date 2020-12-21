@@ -16,35 +16,22 @@ const ExplorarComidas = () => {
 
   return (
     <div>
-      <Header title="Explorar Comidas" />
-      <div className="main-content">
-        <Link to="/explorar/comidas/ingredientes">
-          <button
-            data-testid="explore-by-ingredient"
-            type="button"
+      <Header title="Explore Foods" />
+      <div className="explore">
+        <div className="explore-buttons">
+          <Link to="/explorar/comidas/ingredientes">
+            By Ingredients
+          </Link>
+          <Link to="/explorar/comidas/area">
+            By Area
+          </Link>
+          <Link
+            to={`/comidas/${randomMealID}`}
+            onClick={() => setFetchById(false)}
           >
-            Por Ingredientes
-            </button>
-        </Link>
-        <Link to="/explorar/comidas/area">
-          <button
-            data-testid="explore-by-area"
-            type="button"
-          >
-            Por Local de Origem
-        </button>
-        </Link>
-        <Link
-          to={`/comidas/${randomMealID}`}
-          onClick={() => setFetchById(false)}
-        >
-          <button
-            data-testid="explore-surprise"
-            type="button"
-          >
-            Me Surpreenda!
-        </button>
-        </Link>
+            Surprise-me!
+          </Link>
+        </div>
       </div>
       <Footer />
     </div>

@@ -16,27 +16,19 @@ const ExplorarBebidas = () => {
 
   return (
     <div className="bg">
-      <Header title="Explorar Bebidas" />
-      <div className="main-content">
-        <Link to="/explorar/bebidas/ingredientes">
-          <button
-            data-testid="explore-by-ingredient"
-            type="button"
-          >
-            Por Ingredientes
-            </button>
+      <Header title="Explore Drinks" />
+      <div className="explore">
+        <div className="explore-buttons">
+          <Link to="/explorar/bebidas/ingredientes">
+            By Ingredients
         </Link>
-        <Link
-          to={`/bebidas/${randomDrinkID}`}
-          onClick={() => setFetchById(false)}
-        >
-          <button
-            data-testid="explore-surprise"
-            type="button"
+          <Link
+            to={`/bebidas/${randomDrinkID}`}
+            onClick={() => setFetchById(false)}
           >
-            Me Surpreenda!
-            </button>
+            Surprise-me!
         </Link>
+        </div>
       </div>
       <Footer />
     </div>
